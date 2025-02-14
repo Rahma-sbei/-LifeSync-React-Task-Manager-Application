@@ -6,7 +6,8 @@
   border: 3px groove #a0a0a0;
   border-radius: 20px;
   height: 9vh;
-  width: 30vw !important;
+  width: 27vw !important;
+  padding-left: 20px;
 }
 .signUpInput::placeholder {
   color: #a0a0a0 !important;
@@ -17,7 +18,7 @@
   background-color: #18191f9a !important;
 }
 .signbtn {
-  width: 40%;
+  width: 35%;
   font-size: 20px;
   font-weight: bold;
   font-family: monospace;
@@ -25,6 +26,8 @@
   background-color: #6c00c4 !important;
   border: none;
   border: 2px groove #a0a0a0;
+  color: #a0a0a0;
+  height: 50px;
 }
 .signbtn:hover {
   background-color: #410075 !important;

@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import siImg from "../assets/signInImage.png";
 
 export default function SignIn() {
+  const [user, setUser] = useState({ email: "", password: "" });
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.id]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    console.log("user added successfully!");
+    console.log(`Welcome: ${user.email}`);
+  };
   return (
     <MDBContainer
       style={{
@@ -50,7 +58,9 @@ export default function SignIn() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            border: "1px black solid",
+            marginLeft: "50px",
+            marginRight: "50px",
+            marginTop: "30px",
           }}
         >
           <h2
@@ -67,13 +77,14 @@ export default function SignIn() {
             Sign In to your account
           </h2>
           <form
+            onSubmit={handleSubmit}
             style={{
               marginTop: "50px",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              gap: "35px",
+              gap: "40px",
             }}
           >
             <MDBInput
@@ -81,6 +92,7 @@ export default function SignIn() {
               size="lg"
               placeholder="Enter email"
               id="email"
+              onChange={handleChange}
             />
             <MDBInput
               className="signUpInput"
@@ -88,12 +100,13 @@ export default function SignIn() {
               type="password"
               placeholder="Enter password"
               id="password"
+              onChange={handleChange}
             />
             <Button size="lg" type="submit" className="signbtn">
               SignIn
             </Button>
             <div className="text-center">
-              <p
+              <h5
                 style={{
                   fontSize: "15px",
                   fontWeight: "200",
@@ -113,7 +126,7 @@ export default function SignIn() {
                 >
                   reset password
                 </p>
-              </p>
+              </h5>
             </div>
           </form>
         </MDBCardBody>
