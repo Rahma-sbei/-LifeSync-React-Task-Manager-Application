@@ -3,8 +3,8 @@
   font-size: 15px;
   font-weight: 400;
   background-color: #131536ce !important;
-  border: 3px groove #a0a0a0;
-  border-radius: 20px;
+  border: 3px groove #a0a0a0 !important;
+  border-radius: 20px !important;
   height: 9vh;
   width: 27vw !important;
   padding-left: 20px;
@@ -21,14 +21,48 @@
   width: 35%;
   font-size: 20px;
   font-weight: bold;
-  font-family: monospace;
-  border-radius: 20px;
+  font-family: monospace !important;
+  border-radius: 20px !important;
   background-color: #6c00c4 !important;
   border: none;
-  border: 2px groove #a0a0a0;
+  border: 2px groove #a0a0a0 !important;
   color: #a0a0a0;
   height: 50px;
 }
 .signbtn:hover {
   background-color: #410075 !important;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  border-radius: 20px;
+  height: 70px;
+  padding-left: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #242b4d;
+}
+.button > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e2440;
+  border-radius: 15px;
+  width: 50px;
+  height: 50px;
+}
+
+.button:hover > div {
+  background-color: #582cff;
+}
+.icon {
+  color: #582cff;
+}
+.button:hover .icon {
+  color: #1e2440;
 }

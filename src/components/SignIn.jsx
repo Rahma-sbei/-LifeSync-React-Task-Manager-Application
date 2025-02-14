@@ -66,7 +66,7 @@ export default function SignIn() {
         >
           <h2
             style={{
-              fontSize: "30px",
+              fontSize: "31px",
               fontWeight: "bold",
               color: "white",
               fontFamily: "monospace",

@@ -69,7 +69,7 @@ export default function SignUp() {
         >
           <h2
             style={{
-              fontSize: "40px",
+              fontSize: "35px",
               fontWeight: "bold",
               color: "white",
               fontFamily: "monospace",

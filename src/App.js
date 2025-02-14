@@ -1,5 +1,6 @@
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import NavBar from "./components/NavBar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       }}
     >
       <BrowserRouter>
+        <NavBar />
         <Routes>
           <Route path="/" element={<SignUp />} />
           <Route path="/signIn" element={<SignIn />} />
