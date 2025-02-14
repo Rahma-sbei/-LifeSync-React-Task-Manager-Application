@@ -3,6 +3,7 @@ import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
 import Button from "react-bootstrap/Button";
 import sImg from "../assets/signUpImage.png";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [user, setUser] = useState({
@@ -63,6 +64,7 @@ export default function SignUp() {
             marginLeft: "50px",
             marginRight: "50px",
             marginTop: "30px",
+            paddingBottom: "30px",
           }}
         >
           <h2
@@ -86,7 +88,7 @@ export default function SignUp() {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              gap: "35px",
+              gap: "30px",
             }}
           >
             <MDBInput
@@ -116,7 +118,7 @@ export default function SignUp() {
               Register
             </Button>
             <div className="text-center">
-              <h5
+              <p
                 style={{
                   fontSize: "15px",
                   fontWeight: "200",
@@ -125,19 +127,18 @@ export default function SignUp() {
                 }}
               >
                 Already have an account?{" "}
-                <p
+                <Link
                   to="/signIn"
                   style={{
                     fontSize: "15px",
                     fontWeight: "700",
                     color: "#09b392",
                     letterSpacing: "1.5px",
-                    display: "inline",
                   }}
                 >
                   Sign in
-                </p>
-              </h5>
+                </Link>
+              </p>
             </div>
           </form>
         </MDBCardBody>

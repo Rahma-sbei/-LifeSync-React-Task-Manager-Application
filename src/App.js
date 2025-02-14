@@ -1,5 +1,7 @@
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 function App() {
   return (
     <div
@@ -19,7 +21,12 @@ function App() {
         paddingBottom: "30px",
       }}
     >
-      <SignUp />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignUp />} />
+          <Route path="/signIn" element={<SignIn />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
 import { Button } from "react-bootstrap";
 import siImg from "../assets/signInImage.png";
+import { Link } from "react-router-dom";
 
 export default function SignIn() {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -46,7 +47,7 @@ export default function SignIn() {
             width: "100%",
             height: "100%",
             backdropFilter: "blur(10px)",
-            zIndex: "-1",
+            zIndex: "1",
           }}
         ></div>
 
@@ -106,7 +107,7 @@ export default function SignIn() {
               SignIn
             </Button>
             <div className="text-center">
-              <h5
+              <p
                 style={{
                   fontSize: "15px",
                   fontWeight: "200",
@@ -115,18 +116,19 @@ export default function SignIn() {
                 }}
               >
                 Forgot your password?
-                <p
+                <Link
                   to="/"
                   style={{
                     fontSize: "15px",
                     fontWeight: "700",
                     color: "#09b392",
                     letterSpacing: "1.5px",
+                    marginLeft: "5px",
                   }}
                 >
                   reset password
-                </p>
-              </h5>
+                </Link>
+              </p>
             </div>
           </form>
         </MDBCardBody>
