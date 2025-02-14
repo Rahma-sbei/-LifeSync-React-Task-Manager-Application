@@ -18,6 +18,13 @@ export default function NavBar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const location = useLocation();
+
+  const titles = {
+    "/Home": "Home Page",
+  };
+  const currentTitle = titles[location.pathname];
+
   return (
     <Navbar>
       <Container
@@ -34,7 +41,7 @@ export default function NavBar() {
         <Navbar.Brand
           style={{ fontSize: "30px", fontWeight: "Bold", color: "white" }}
         >
-          Welcome
+          {currentTitle}
         </Navbar.Brand>
 
         <div

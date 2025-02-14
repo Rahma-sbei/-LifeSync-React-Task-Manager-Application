@@ -3,16 +3,19 @@ import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
 import { Button } from "react-bootstrap";
 import siImg from "../assets/signInImage.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const [user, setUser] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.id]: e.target.value });
   };
   const handleSubmit = (e) => {
     console.log("user added successfully!");
     console.log(`Welcome: ${user.email}`);
+    navigate("/Home");
   };
   return (
     <MDBContainer
