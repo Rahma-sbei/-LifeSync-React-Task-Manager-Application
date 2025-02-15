@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -10,7 +10,7 @@ import Divider from "./Divider";
 import { Navs, Prof } from "./Navs";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
-import { FaUser, FaUserTie, FaBell, FaBars } from "react-icons/fa";
+import { FaUser, FaBell, FaBars } from "react-icons/fa";
 import { OffcanvasTitle } from "react-bootstrap";
 
 export default function NavBar() {
