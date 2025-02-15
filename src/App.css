@@ -108,9 +108,25 @@
   justify-content: center;
   cursor: pointer;
 }
-
 .date-item.selected {
   background-color: #080d2a;
   color: white;
   font-weight: bold;
+}
+.add-task-button {
+  position: fixed;
+  bottom: 40px;
+  right: 70px;
+  background-color: #09b392;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }

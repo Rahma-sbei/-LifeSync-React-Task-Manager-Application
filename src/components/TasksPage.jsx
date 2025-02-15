@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import DateNavigation from "./DateNavigation";
+import AddTaskButton from "./AddTaskButton";
 import "../App.css";
 
 export default function TasksPage() {
@@ -24,6 +25,12 @@ export default function TasksPage() {
   }
   const [currentDate, setCurrentDate] = useState(today);
   const [selectedDay, setSelectedDay] = useState("01");
+  const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+
+  const handleAddTaskClick = () => {
+    setShowAddTaskModal(true);
+    console.log(showAddTaskModal);
+  };
 
   const handleDayClick = (day) => {
     setSelectedDay(day);
@@ -41,6 +48,7 @@ export default function TasksPage() {
     >
       <Header currentDate={currentDate} />
       <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />
+      <AddTaskButton handleAddTaskClick={handleAddTaskClick} />
     </div>
   );
 }
