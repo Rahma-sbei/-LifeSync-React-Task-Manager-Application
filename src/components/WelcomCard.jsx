@@ -2,11 +2,13 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import bgImage from "../assets/pexels-lilartsy-1925537.png";
+import { ShowContext } from "../App";
 
 export default function WelcomeCard() {
   const [hover, setHover] = useState(false);
+  const { handleShow } = useContext(ShowContext);
 
   return (
     <div
@@ -76,6 +78,7 @@ export default function WelcomeCard() {
             onMouseLeave={() => {
               setHover(false);
             }}
+            onClick={handleShow}
           >
             Check your tools
             <FaArrowRight style={{ marginTop: "5px" }} />

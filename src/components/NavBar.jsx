@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -12,12 +12,10 @@ import { Link, useLocation } from "react-router-dom";
 import "../App.css";
 import { FaUser, FaBell, FaBars } from "react-icons/fa";
 import { OffcanvasTitle } from "react-bootstrap";
+import { ShowContext } from "../App";
 
 export default function NavBar() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const { handleShow, handleClose, show } = useContext(ShowContext);
   const location = useLocation();
 
   const titles = {
