@@ -94,3 +94,23 @@
 ::-webkit-scrollbar:active {
   opacity: 1;
 }
+.date-item {
+  width: 60px;
+  height: 65px;
+  border: 1px solid white;
+  background-color: rgba(100, 0, 109, 0.363);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.date-item.selected {
+  background-color: #080d2a;
+  color: white;
+  font-weight: bold;
+}

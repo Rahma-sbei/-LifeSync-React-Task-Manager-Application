@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "./Header";
+import DateNavigation from "./DateNavigation";
 import "../App.css";
 
 export default function TasksPage() {
@@ -22,7 +23,13 @@ export default function TasksPage() {
     );
   }
   const [currentDate, setCurrentDate] = useState(today);
+  const [selectedDay, setSelectedDay] = useState("01");
 
+  const handleDayClick = (day) => {
+    setSelectedDay(day);
+    console.log(day.split("")[1]);
+    setCurrentDate(week[Number(day.split("")[1]) - 1]);
+  };
   return (
     <div
       style={{
@@ -33,6 +40,7 @@ export default function TasksPage() {
       }}
     >
       <Header currentDate={currentDate} />
+      <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />
     </div>
   );
 }
