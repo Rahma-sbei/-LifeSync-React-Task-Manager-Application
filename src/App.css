@@ -72,3 +72,25 @@
   border-radius: 20px;
   margin-top: 30px;
 }
+::-webkit-scrollbar {
+  width: 5px;
+  opacity: 0;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a1a7d1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #090d2d57;
+}
+::-webkit-scrollbar:hover,
+::-webkit-scrollbar:active {
+  opacity: 1;
+}
