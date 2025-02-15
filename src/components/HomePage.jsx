@@ -2,6 +2,7 @@ import React from "react";
 import WelcomeCard from "./WelcomCard";
 import TaskChart from "./TaskChart";
 import TodaysDeadLines from "./TodaysDeadlines";
+import AllExpenses from "./AllExpenses";
 
 export default function HomePage() {
   return (
@@ -24,6 +25,7 @@ export default function HomePage() {
           }}
         >
           <TodaysDeadLines />
+          <AllExpenses />
         </div>
       </div>
     </div>
