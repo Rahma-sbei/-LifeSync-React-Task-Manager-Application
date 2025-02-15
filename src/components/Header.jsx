@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { FaListCheck } from "react-icons/fa6";
 import Dimg from "../assets/bgsc.png";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import { Link } from "react-router-dom";
 
 export default function Header({ currentDate }) {
+  const [hover1, setHover1] = useState(false);
+  const [hover2, setHover2] = useState(false);
   return (
     <Card
       style={{
@@ -72,16 +73,45 @@ export default function Header({ currentDate }) {
           fontWeight: "bold",
         }}
       >
-        <Link to="/TaskBoard">
-          <Button variant="primary" className="taskbtn1">
-            Create Task Board
-          </Button>
-        </Link>
-        <Link to="/AllBoards">
-          <Button variant="outline-light" className="taskbtn2">
-            View My Boards
-          </Button>
-        </Link>
+        <Button
+          style={{
+            fontSize: "15px",
+            minHeight: "7vh",
+            width: "155px",
+            fontWeight: "bold",
+            borderRadius: "10px",
+            backgroundColor: hover1 ? "#5e369b" : "#9d5aff",
+            border: "none",
+          }}
+          onMouseEnter={() => {
+            setHover1(true);
+          }}
+          onMouseLeave={() => {
+            setHover1(false);
+          }}
+        >
+          Create Task Board
+        </Button>
+        <Button
+          style={{
+            fontSize: "15px",
+            minHeight: "7vh",
+            width: "150px",
+            fontWeight: "bold",
+            borderRadius: "10px",
+            backgroundColor: hover2 ? "#09B392" : "transparent",
+            border: hover2 ? "none" : "1px solid #09B392",
+            color: hover2 ? "white" : "#09B392",
+          }}
+          onMouseEnter={() => {
+            setHover2(true);
+          }}
+          onMouseLeave={() => {
+            setHover2(false);
+          }}
+        >
+          View My Boards
+        </Button>
       </div>
     </Card>
   );

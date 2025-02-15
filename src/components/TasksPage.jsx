@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
-import DateNavigation from "./DateNavigation";
-import TaskList from "./TaskList";
-import AddTaskButton from "./AddTaskButton";
-import AddTaskModal from "./AddTaskModal";
+import React, { useState } from "react";
 import Header from "./Header";
-import { jwtDecode } from "jwt-decode";
-import axios from "axios";
 import "../App.css";
 
 export default function TasksPage() {
@@ -29,10 +23,6 @@ export default function TasksPage() {
   }
   const [currentDate, setCurrentDate] = useState(today);
 
-  const handleAddTaskClick = () => {
-    setShowAddTaskModal(true);
-  };
-
   return (
     <div
       style={{
@@ -42,10 +32,7 @@ export default function TasksPage() {
         alignItems: "center",
       }}
     >
-      <Header
-        currentDate={currentDate}
-        handleAddTaskClick={handleAddTaskClick}
-      />
+      <Header currentDate={currentDate} />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import SignUp from "./SignUp";
 import NavBar from "./NavBar";
 import HomePage from "./HomePage";
 import { Routes, Route, useLocation } from "react-router-dom";
+import TasksPage from "./TasksPage";
 
 export default function FullApp() {
   const noNavBarPages = ["/", "/signIn"];
@@ -30,6 +31,7 @@ export default function FullApp() {
         <Route path="/" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/Home" element={<HomePage />} />
+        <Route path="/Tasks" element={<TasksPage />} />
       </Routes>
     </div>
   );
