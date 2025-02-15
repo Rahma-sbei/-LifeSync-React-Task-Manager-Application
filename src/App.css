@@ -66,3 +66,9 @@
 .button:hover .icon {
   color: #1e2440;
 }
+.custom-dropdown .dropdown-menu {
+  background-color: #0f1535 !important;
+  border: 1px solid #4e556d;
+  border-radius: 20px;
+  margin-top: 30px;
+}
