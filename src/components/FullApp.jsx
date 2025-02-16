@@ -2,6 +2,7 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import NavBar from "./NavBar";
 import HomePage from "./HomePage";
+import Footer from "./Footer";
 import { Routes, Route, useLocation } from "react-router-dom";
 import TasksPage from "./TasksPage";
 
@@ -33,6 +34,7 @@ export default function FullApp() {
         <Route path="/Home" element={<HomePage />} />
         <Route path="/Tasks" element={<TasksPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
