@@ -22,7 +22,7 @@ export default function AddTaskModal({
     resetForm();
     closeModal();
   };
-
+  const status = "Incomplete";
   const handleSubmit = () => {
     if (!taskName || !taskDesc || !day) {
       alert("All field need to be filled to create a task.");
@@ -34,7 +34,7 @@ export default function AddTaskModal({
           month: "2-digit",
         })
         .replace(/\//g, "-");
-      addTask({ taskName, taskDesc, deadline });
+      addTask({ taskName, taskDesc, deadline, status });
       resetForm();
       closeModal();
     }

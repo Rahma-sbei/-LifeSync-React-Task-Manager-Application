@@ -24,16 +24,19 @@ export default function TaskList({ tasks, onDelete }) {
       }}
     >
       {tasks.length > 0 ? (
-        tasks.map((task, index) => (
-          <TaskItem key={index} task={task} onDelete={onDelete} />
-        ))
+        tasks.map(
+          (task, index) => (
+            console.log(task.taskName),
+            (<TaskItem key={index} task={task} onDelete={onDelete} />)
+          )
+        )
       ) : (
         <Card.Text
           style={{
             fontSize: "30px",
             fontWeight: "bold",
             letterSpacing: "3px",
-            color: "white",
+            color: "#aaa",
           }}
         >
           No Tasks For This Date

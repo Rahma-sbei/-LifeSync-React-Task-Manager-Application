@@ -45,8 +45,10 @@ export default function TasksPage() {
   };
 
   const addTask = (task) => {
-    const fullTask = { ...task, currentDate: selectedDay };
-    console.log(fullTask);
+    const fullTask = {
+      ...task,
+      currentDate: selectedDay,
+    };
     setTasks((prevTasks) => ({
       ...prevTasks,
       [selectedDay]: [...(prevTasks[selectedDay] || []), task],
@@ -72,7 +74,7 @@ export default function TasksPage() {
       }}
     >
       <Header currentDate={currentDate} />
-      <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />^
+      <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />
       <TaskList tasks={tasks[selectedDay] || []} onDelete={deleteTask} />
       <AddTaskButton handleAddTaskClick={handleAddTaskClick} />
       <AddTaskModal

@@ -10,11 +10,16 @@ export default function TaskItem({ task, onDelete }) {
     day: "numeric",
   };
 
-  const [status, setStatus] = useState("incomplete");
+  const [status, setStatus] = useState("Incomplete");
   const toggleStatus = (taskToUpdate) => {
-    if (taskToUpdate.status === "Incomplete") {
+    setStatus(taskToUpdate.status);
+    console.log("taskToUpdate.status", taskToUpdate.status);
+
+    if (status === "Incomplete") {
       setStatus("Complete");
-    } else if (taskToUpdate.status === "Complete") {
+      console.log(status);
+    } else if (status === "Complete") {
+      // console.log(status);
       setStatus("Incomplete");
     }
   };
