@@ -3,6 +3,7 @@ import Header from "./Header";
 import DateNavigation from "./DateNavigation";
 import AddTaskButton from "./AddTaskButton";
 import AddTaskModal from "./AddTaskModal";
+import TaskList from "./TaskList";
 import "../App.css";
 
 export default function TasksPage() {
@@ -52,6 +53,15 @@ export default function TasksPage() {
     }));
   };
 
+  const deleteTask = (taskToDelete) => {
+    setTasks((prevTasks) => ({
+      ...prevTasks,
+      [selectedDay]: prevTasks[selectedDay].filter(
+        (task) => task !== taskToDelete
+      ),
+    }));
+  };
+
   return (
     <div
       style={{
@@ -62,7 +72,8 @@ export default function TasksPage() {
       }}
     >
       <Header currentDate={currentDate} />
-      <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />
+      <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />^
+      <TaskList tasks={tasks[selectedDay] || []} onDelete={deleteTask} />
       <AddTaskButton handleAddTaskClick={handleAddTaskClick} />
       <AddTaskModal
         addTask={addTask}
