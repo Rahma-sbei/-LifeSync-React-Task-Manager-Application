@@ -130,3 +130,99 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
+.btn1 {
+  background-color: #09b392;
+  padding: 10px 20px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+}
+.btn1:hover {
+  background-color: #07755f;
+  border: none;
+}
+.btn2 {
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid #09b392;
+  color: #09b392;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.btn2:hover {
+  background-color: #09b392;
+  color: white;
+}
+.modall.show {
+  display: inline-block;
+}
+.modall h2 {
+  color: white;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+.modall h4 {
+  font-size: 15px;
+  color: rgb(170, 169, 169);
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.modall {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background-color: #3b157988;
+  height: 90vh;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  width: 35vw;
+  border: 2px solid #787ea3;
+  text-align: center;
+  overflow-y: auto;
+}
+.modall.show {
+  display: inline-block;
+}
+.modall ::placeholder {
+  color: #a0a0a0 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+.modalContent {
+  margin-top: 30px;
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 1;
+}
+.modalContent input {
+  width: 100%;
+  height: 9vh;
+  background-color: #131536;
+  border: 2px solid #a0a0a0;
+  border-radius: 20px;
+  padding-left: 20px;
+  color: white;
+}
+.modall button {
+  margin-top: 10px;
+}
+.modalContent textarea {
+  width: 100%;
+  height: 20vh;
+  background-color: #131536;
+  border: 2px solid #a0a0a0;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: white;
+}

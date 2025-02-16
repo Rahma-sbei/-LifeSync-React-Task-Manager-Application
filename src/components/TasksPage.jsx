@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./Header";
 import DateNavigation from "./DateNavigation";
 import AddTaskButton from "./AddTaskButton";
+import AddTaskModal from "./AddTaskModal";
 import "../App.css";
 
 export default function TasksPage() {
@@ -26,10 +27,14 @@ export default function TasksPage() {
   const [currentDate, setCurrentDate] = useState(today);
   const [selectedDay, setSelectedDay] = useState("01");
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+  const [tasks, setTasks] = useState({});
 
   const handleAddTaskClick = () => {
     setShowAddTaskModal(true);
-    console.log(showAddTaskModal);
+  };
+
+  const closeModal = () => {
+    setShowAddTaskModal(false);
   };
 
   const handleDayClick = (day) => {
@@ -37,6 +42,16 @@ export default function TasksPage() {
     console.log(day.split("")[1]);
     setCurrentDate(week[Number(day.split("")[1]) - 1]);
   };
+
+  const addTask = (task) => {
+    const fullTask = { ...task, currentDate: selectedDay };
+    console.log(fullTask);
+    setTasks((prevTasks) => ({
+      ...prevTasks,
+      [selectedDay]: [...(prevTasks[selectedDay] || []), task],
+    }));
+  };
+
   return (
     <div
       style={{
@@ -49,6 +64,11 @@ export default function TasksPage() {
       <Header currentDate={currentDate} />
       <DateNavigation onDayClick={handleDayClick} selectedDay={selectedDay} />
       <AddTaskButton handleAddTaskClick={handleAddTaskClick} />
+      <AddTaskModal
+        addTask={addTask}
+        closeModal={closeModal}
+        showAddTaskModal={showAddTaskModal}
+      />
     </div>
   );
 }
