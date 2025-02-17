@@ -131,31 +131,31 @@
   cursor: pointer;
 }
 .btn1 {
-  background-color: #09b392;
-  padding: 10px 20px;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
+  background-color: #09b392 !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+  border: none !important;
 }
 .btn1:hover {
-  background-color: #07755f;
-  border: none;
+  background-color: #07755f !important;
+  border: none !important;
 }
 .btn2 {
-  padding: 10px 20px;
-  background-color: transparent;
-  border: 1px solid #09b392;
-  color: #09b392;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 10px;
+  padding: 10px 20px !important;
+  background-color: transparent !important;
+  border: 1px solid #09b392 !important;
+  color: #09b392 !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
 }
 
 .btn2:hover {
-  background-color: #09b392;
-  color: white;
+  background-color: #09b392 !important;
+  color: white !important;
 }
 .modall.show {
   display: inline-block;
@@ -197,7 +197,7 @@
   letter-spacing: 2px;
 }
 .modalContent {
-  margin-top: 30px;
+  margin-top: 40px;
   margin: 0px 20px;
   display: flex;
   flex-direction: column;
@@ -277,4 +277,15 @@
 
 .task-details {
   flex-grow: 1;
+}
+.profbtn1 {
+  background-color: #09b392 !important;
+  padding: 10px 20px !important;
+  color: white !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  min-height: 8vh !important;
+  border-radius: 10px !important;
+  margin-right: 50px !important;
+  border: none !important;
 }

@@ -21,14 +21,13 @@ export default function Footer() {
     >
       <div
         style={{
-          marginTop: "22px",
+          marginTop: "20px",
           paddingTop: "0px",
           width: "20%",
           display: "flex",
           flexDirection: "column",
           alignItems: "start",
           justifyContent: "center",
-          paddingBottom: "0px",
         }}
       >
         <Card.Text
