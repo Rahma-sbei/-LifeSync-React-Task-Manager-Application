@@ -21,7 +21,7 @@ export default function NavBar() {
   const titles = {
     "/Home": "Home Page",
     "/Tasks": "Tasks Manager",
-    "/Profile": "My Pofile",
+    "/Profile": "My Pofile ",
   };
   const currentTitle = titles[location.pathname];
 
@@ -60,30 +60,33 @@ export default function NavBar() {
               alignItems: "center",
             }}
           >
-            <Button
-              variant="outlined-dark"
-              style={{
-                outline: "none",
-                paddingTop: "10px",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <FaUser
-                  size={18}
-                  style={{ color: "white", marginRight: "10px" }}
-                />
-                <Form.Text
-                  style={{
-                    color: "white",
-                    marginBottom: "6px",
-                    fontWeight: "bold",
-                    fontSize: "17px",
-                  }}
-                >
-                  My Profile
-                </Form.Text>
-              </div>
-            </Button>
+            <Link to="/Profile" style={{ textDecoration: "none" }}>
+              <Button
+                variant="outlined-dark"
+                style={{
+                  outline: "none",
+                  paddingTop: "10px",
+                  border: "none",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <FaUser
+                    size={18}
+                    style={{ color: "white", marginRight: "10px" }}
+                  />
+                  <Form.Text
+                    style={{
+                      color: "white",
+                      marginBottom: "6px",
+                      fontWeight: "bold",
+                      fontSize: "17px",
+                    }}
+                  >
+                    My Profile
+                  </Form.Text>
+                </div>
+              </Button>
+            </Link>
 
             <Button
               variant="outlined-dark"
