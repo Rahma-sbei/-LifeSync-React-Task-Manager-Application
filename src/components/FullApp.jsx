@@ -5,6 +5,7 @@ import HomePage from "./HomePage";
 import Footer from "./Footer";
 import { Routes, Route, useLocation } from "react-router-dom";
 import TasksPage from "./TasksPage";
+import Expenses from "./Expenses";
 
 export default function FullApp() {
   const noNavBarPages = ["/", "/signIn"];
@@ -33,6 +34,7 @@ export default function FullApp() {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/Home" element={<HomePage />} />
         <Route path="/Tasks" element={<TasksPage />} />
+        <Route path="/Expenses" element={<Expenses />} />
       </Routes>
       <Footer />
     </div>

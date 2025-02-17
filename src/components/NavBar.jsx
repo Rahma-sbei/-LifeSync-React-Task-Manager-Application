@@ -21,6 +21,7 @@ export default function NavBar() {
   const titles = {
     "/Home": "Home Page",
     "/Tasks": "Tasks Manager",
+    "/Expenses": "Expenses Manager",
   };
   const currentTitle = titles[location.pathname];
 
