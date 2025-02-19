@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import Dimg from "../assets/cardimgfree22.png";
 import Dimg2 from "../assets/BackgroundCard1.png";
@@ -6,34 +6,74 @@ import Divider from "./Divider";
 import Pimg from "../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 import { FaUser, FaAt, FaKey, FaUserLock } from "react-icons/fa6";
 import "../App.css";
-import { UserContext } from "./FullApp";
 
 export default function MyProfile() {
+  const [currentUser, setcurrentUser] = useState({});
+  const [userId, setUserId] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  const [user, setUser] = useState({
-    userName: currentUser.userName,
-    email: currentUser.email,
-    password: currentUser.password,
+  const [userUpdate, setUpdate] = useState({
+    userName: "",
+    email: "",
+    password: "",
   });
-
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.id]: e.target.value });
+    setUpdate({ ...userUpdate, [e.target.id]: e.target.value });
   };
+  const url = "http://localhost:6005/api/users";
 
-  const handleUpdate = () => {
-    console.log(user);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        console.log("this is the decode token", decodedToken);
+        setUserId(decodedToken.id);
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+    if (userId) {
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      axios
+        .get(`${url}/${userId}`, { headers })
+        .then((res) => {
+          setcurrentUser(res.data.user);
+          console.log("this is the username", currentUser.userName);
+        })
+        .catch((error) => {
+          console.error(error.response.data.msg);
+        });
+    }
+  }, [userId]);
 
-    if (user.userName != "" || user.email != "" || user.password != "") {
-      alert("Profile updated successfully");
-      handleClose();
-    } else {
-      alert("Fill all fields to proceed");
+  const handleUpdate = async (e) => {
+    console.log(userUpdate);
+    try {
+      if (
+        userUpdate.userName != "" ||
+        userUpdate.email != "" ||
+        userUpdate.password != ""
+      ) {
+        await axios.put(`${url}/${currentUser._id}`, userUpdate);
+        alert("Profile updated successfully");
+        handleClose();
+        window.location.reload();
+      } else {
+        alert("Fill all fields to proceed");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
@@ -98,9 +138,11 @@ export default function MyProfile() {
                   letterSpacing: "3px",
                 }}
               >
-                Welcome Back, {user.userName}
+                Welcome Back, {currentUser.userName}
               </Card.Title>
-              <Card.Text style={{ color: "#9D5AFF" }}>{user.email}</Card.Text>
+              <Card.Text style={{ color: "#9D5AFF" }}>
+                {currentUser.email}
+              </Card.Text>
             </div>
           </div>
           <div
@@ -187,7 +229,7 @@ export default function MyProfile() {
                     letterSpacing: "2px",
                   }}
                 >
-                  {user.userName}
+                  {currentUser.userName}
                 </Card.Text>
               </div>
             </div>
@@ -236,7 +278,7 @@ export default function MyProfile() {
                     letterSpacing: "2px",
                   }}
                 >
-                  {user.email}
+                  {currentUser.email}
                 </Card.Text>
               </div>
             </div>
@@ -314,44 +356,76 @@ export default function MyProfile() {
             >
               <div
                 style={{
-                  width: "50px",
-                  height: "50px",
                   display: "flex",
-                  marginLeft: "60px",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundImage: `url('${Pimg}')`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  borderRadius: "10px",
+                  gap: "55px",
+                  width: "60%",
                 }}
               >
-                <FaKey size={25} color="white" />
-              </div>
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <Card.Text
+                <div
                   style={{
-                    fontSize: "20px",
-                    fontWeight: "700",
-                    color: "white",
-                    letterSpacing: "2px",
-                    marginBottom: "3px",
+                    width: "50px",
+                    height: "50px",
+                    display: "flex",
+                    marginLeft: "60px",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundImage: `url('${Pimg}')`,
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    borderRadius: "10px",
                   }}
                 >
-                  Password
-                </Card.Text>
-                <Card.Text
+                  <FaKey size={25} color="white" />
+                </div>
+                <div
                   style={{
-                    fontSize: "15px",
-                    fontWeight: "00",
-                    color: "rgb(178, 128, 252)",
-                    marginTop: "0px",
-                    letterSpacing: "2px",
+                    display: "flex",
+                    flexDirection: "column",
                   }}
                 >
-                  {user.password}
-                </Card.Text>
+                  <Card.Text
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "700",
+                      color: "white",
+                      letterSpacing: "2px",
+                      marginBottom: "3px",
+                    }}
+                  >
+                    Password
+                  </Card.Text>
+
+                  <Card.Text
+                    style={{
+                      fontSize: "15px",
+                      fontWeight: "00",
+                      color: "rgb(178, 128, 252)",
+                      marginTop: "0px",
+                      letterSpacing: "2px",
+                    }}
+                  >
+                    {currentUser && currentUser.password
+                      ? showPassword
+                        ? currentUser.password
+                        : "•".repeat(currentUser.password.length)
+                      : "Loading..."}
+                  </Card.Text>
+                </div>
               </div>
+              <Button
+                variant="outline-light"
+                size="sm"
+                className={showPassword ? "btn1" : "btn2"}
+                style={{
+                  marginTop: "5px",
+                  alignSelf: "start",
+                  padding: "0px",
+                  marginLeft: "60px",
+                }}
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </Button>
             </div>
           </Card>
         </div>
@@ -370,7 +444,7 @@ export default function MyProfile() {
         ></div>
         <h2 style={{ marginTop: "50px" }}>Update profile</h2>
         <h4 style={{ marginBottom: "50px" }}>
-          Fill out all the fields to update your profile
+          Fill out all the firls to update your profile
         </h4>
         <div className="modalContent">
           <Form>
@@ -395,7 +469,7 @@ export default function MyProfile() {
               </Form.Label>
               <Form.Control
                 type="text"
-                placeholder={user.userName}
+                placeholder={currentUser.userName}
                 onChange={handleChange}
                 id="userName"
               />
@@ -421,7 +495,7 @@ export default function MyProfile() {
               </Form.Label>
               <Form.Control
                 type="email"
-                placeholder={user.email}
+                placeholder={currentUser.email}
                 onChange={handleChange}
                 id="email"
               />
@@ -447,7 +521,7 @@ export default function MyProfile() {
               </Form.Label>
               <Form.Control
                 type="text"
-                placeholder={user.password}
+                placeholder={currentUser.password}
                 onChange={handleChange}
                 id="password"
               />
@@ -457,8 +531,7 @@ export default function MyProfile() {
                 display: "flex",
                 gap: "20px",
                 justifyContent: "center",
-                marginBottom: "10px",
-                marginTop: "20px",
+                marginBottom: "20px",
               }}
             >
               <Button className="btn1" onClick={handleUpdate}>

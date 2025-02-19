@@ -1,16 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
 import { Button } from "react-bootstrap";
 import siImg from "../assets/signInImage.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserContext } from "./FullApp";
 
 export default function SignIn() {
   const url = "http://localhost:6005/api/signIn";
   const [user, setUser] = useState({ email: "", password: "" });
-  const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,7 +28,6 @@ export default function SignIn() {
           localStorage.setItem("token", token);
           console.log(response.data.user.role);
           if (response.data.user.role === "user") {
-            setCurrentUser(response.data.user);
             navigate("/Home");
           } else {
             navigate("/Admin");

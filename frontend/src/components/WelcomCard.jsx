@@ -1,15 +1,46 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaArrowRight } from "react-icons/fa6";
 import bgImage from "../assets/pexels-lilartsy-1925537.png";
 import { ShowContext } from "../App";
-import { UserContext } from "./FullApp";
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 export default function WelcomeCard() {
+  const url = "http://localhost:6005/api/users";
+
   const [hover, setHover] = useState(false);
   const { handleShow } = useContext(ShowContext);
-  const { currentUser } = useContext(UserContext);
+  const [currentUser, setcurrentUser] = useState({});
+  const [userId, setUserId] = useState({});
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        setUserId(decodedToken.id);
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+    if (userId) {
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      axios
+        .get(`${url}/${userId}`, { headers })
+        .then((res) => {
+          setcurrentUser(res.data.user);
+          console.log("this is the username", currentUser.userName);
+        })
+        .catch((error) => {
+          console.error(error.response.data.msg);
+        });
+    }
+  }, [userId]);
 
   return (
     <div
