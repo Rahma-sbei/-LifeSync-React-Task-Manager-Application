@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const connectDb = require("./configuration/connectDb");
+const userRoute = require("./routes/userRoute");
 dotenv.config();
 
 const port = process.env.PORT;
@@ -15,3 +16,4 @@ app.listen(port, (error) => {
   }
 });
 app.use(express.json());
+app.use("/api", userRoute);
