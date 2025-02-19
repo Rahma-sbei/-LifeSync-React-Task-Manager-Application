@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card } from "react-bootstrap";
 import Dimg from "../assets/cardimgfree22.png";
 import Dimg2 from "../assets/BackgroundCard1.png";
@@ -8,16 +8,18 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { FaUser, FaAt, FaKey, FaUserLock } from "react-icons/fa6";
 import "../App.css";
+import { UserContext } from "./FullApp";
 
 export default function MyProfile() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const [user, setUser] = useState({
-    userName: "current username",
-    email: "current email",
-    password: "current password",
+    userName: currentUser.userName,
+    email: currentUser.email,
+    password: currentUser.password,
   });
 
   const handleChange = (e) => {
@@ -298,7 +300,7 @@ export default function MyProfile() {
                     letterSpacing: "2px",
                   }}
                 >
-                  {user.role}
+                  {currentUser.role}
                 </Card.Text>
               </div>
             </div>

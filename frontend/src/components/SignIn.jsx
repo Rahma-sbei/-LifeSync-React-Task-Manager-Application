@@ -1,22 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
 import { Button } from "react-bootstrap";
 import siImg from "../assets/signInImage.png";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "./FullApp";
 
 export default function SignIn() {
+  const url = "http://localhost:6005/api/signIn";
   const [user, setUser] = useState({ email: "", password: "" });
+  const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.id]: e.target.value });
   };
+
   const handleSubmit = (e) => {
-    console.log("user added successfully!");
-    console.log(`Welcome: ${user.email}`);
-    navigate("/Home");
+    if (user.email === "" || user.password === "") {
+      alert("Please fill all the fields to sign in. ");
+    } else {
+      e.preventDefault();
+      axios
+        .post(url, user)
+        .then((response) => {
+          console.log(response.data);
+          const token = response.data.token;
+          localStorage.setItem("token", token);
+          console.log(response.data.user.role);
+          if (response.data.user.role === "user") {
+            setCurrentUser(response.data.user);
+            navigate("/Home");
+          } else {
+            navigate("/Admin");
+          }
+        })
+        .catch((error) => {
+          alert(error.response.data.msg);
+          console.error("There was an error!", error);
+        });
+    }
   };
+
   return (
     <MDBContainer
       style={{

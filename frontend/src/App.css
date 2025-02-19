@@ -1,5 +1,5 @@
 .signUpInput {
-  color: white;
+  color: white !important;
   font-size: 15px;
   font-weight: 400;
   background-color: #131536ce !important;

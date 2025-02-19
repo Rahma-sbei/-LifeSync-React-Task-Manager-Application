@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaArrowRight } from "react-icons/fa6";
-import { useState, useContext } from "react";
 import bgImage from "../assets/pexels-lilartsy-1925537.png";
 import { ShowContext } from "../App";
+import { UserContext } from "./FullApp";
 
 export default function WelcomeCard() {
   const [hover, setHover] = useState(false);
   const { handleShow } = useContext(ShowContext);
+  const { currentUser } = useContext(UserContext);
 
   return (
     <div
@@ -47,7 +48,7 @@ export default function WelcomeCard() {
               color: "white",
             }}
           >
-            Welcome Back, username
+            Welcome Back, {currentUser.userName}
           </Card.Title>
           <div
             style={{

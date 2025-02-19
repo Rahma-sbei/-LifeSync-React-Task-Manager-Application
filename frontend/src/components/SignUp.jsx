@@ -3,9 +3,12 @@ import { MDBContainer, MDBCard, MDBCardBody, MDBInput } from "mdb-react-ui-kit";
 import "../App.css";
 import Button from "react-bootstrap/Button";
 import sImg from "../assets/signUpImage.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function SignUp() {
+  const url = "http://localhost:6005/api/users";
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     userName: "",
     email: "",
@@ -15,7 +18,18 @@ export default function SignUp() {
     setUser({ ...user, [e.target.id]: e.target.value });
   };
   const handleSubmit = (e) => {
-    console.log(`New user created , Hello ${user.userName}`);
+    e.preventDefault();
+    axios
+      .post(url, user)
+      .then((response) => {
+        console.log(response.data);
+        alert(response.data.msg);
+        navigate("/signIn");
+      })
+      .catch((error) => {
+        alert(error.response.data.msg);
+        console.error("There was an error!", error);
+      });
   };
   return (
     <MDBContainer
