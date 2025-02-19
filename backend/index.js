@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const cors = require("cors");
 const connectDb = require("./configuration/connectDb");
 const taskRoute = require("./routes/taskRoute");
 const userRoute = require("./routes/userRoute");
@@ -9,6 +10,7 @@ dotenv.config();
 
 const port = process.env.PORT;
 connectDb();
+app.use(cors());
 
 app.listen(port, (error) => {
   if (error) {

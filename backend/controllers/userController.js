@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../models/User");
 
@@ -50,6 +51,29 @@ const postUser = async (request, response) => {
   }
 };
 
+const signIn = async (req, res) => {
+  const user = req.body;
+  try {
+    const foundUser = await User.findOne({ email: user.email });
+    if (foundUser) {
+      if (user.password === foundUser.password) {
+        const token = jwt.sign(
+          { id: foundUser._id, role: foundUser.role },
+          process.env.JWT_SECRET
+        );
+        res.status(200).json({ user: foundUser, token: token });
+      } else {
+        res.status(400).json({ msg: "Wrong password" });
+      }
+    } else {
+      return res.status(400).json({ msg: "User not registered" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
 const putUser = async (req, res) => {
   const id = req.params.id;
   const user = req.body;
@@ -77,4 +101,5 @@ module.exports = {
   putUser,
   deleteUser,
   getOneUser,
+  signIn,
 };
