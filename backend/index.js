@@ -5,6 +5,7 @@ const cors = require("cors");
 const connectDb = require("./configuration/connectDb");
 const taskRoute = require("./routes/taskRoute");
 const userRoute = require("./routes/userRoute");
+const boardRoute = require("./routes/boardRoute");
 
 dotenv.config();
 
@@ -22,3 +23,4 @@ app.listen(port, (error) => {
 app.use(express.json());
 app.use("/api", userRoute);
 app.use("/api", taskRoute);
+app.use("/api", boardRoute);
