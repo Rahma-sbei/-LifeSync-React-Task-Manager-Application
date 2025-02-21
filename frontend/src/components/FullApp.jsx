@@ -8,6 +8,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import TasksPage from "./TasksPage";
 import MyProfile from "./MyProfile";
 import TaskBoard from "./TaskBoards";
+import AllBoards from "./AllBoards";
 
 export const UserContext = createContext();
 
@@ -43,6 +44,7 @@ export default function FullApp() {
           <Route path="/Tasks" element={<TasksPage />} />
           <Route path="/Profile" element={<MyProfile />} />
           <Route path="/TaskBoard" element={<TaskBoard />} />
+          <Route path="/AllBoards" element={<AllBoards />} />
         </Routes>
         <Footer />
       </div>

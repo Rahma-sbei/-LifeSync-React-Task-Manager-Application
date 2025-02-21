@@ -1,4 +1,4 @@
-const Board = require("../models/TaskBoard");
+const Board = require("../models/TaskBoards");
 const User = require("../models/User");
 
 require("dotenv").config();
