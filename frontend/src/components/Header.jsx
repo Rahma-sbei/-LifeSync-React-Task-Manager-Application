@@ -73,25 +73,27 @@ export default function Header({ currentDate }) {
           fontWeight: "bold",
         }}
       >
-        <Button
-          style={{
-            fontSize: "15px",
-            minHeight: "7vh",
-            width: "155px",
-            fontWeight: "bold",
-            borderRadius: "10px",
-            backgroundColor: hover1 ? "#5e369b" : "#9d5aff",
-            border: "none",
-          }}
-          onMouseEnter={() => {
-            setHover1(true);
-          }}
-          onMouseLeave={() => {
-            setHover1(false);
-          }}
-        >
-          Create Task Board
-        </Button>
+        <Link to="/TaskBoard">
+          <Button
+            style={{
+              fontSize: "15px",
+              minHeight: "7vh",
+              width: "155px",
+              fontWeight: "bold",
+              borderRadius: "10px",
+              backgroundColor: hover1 ? "#5e369b" : "#9d5aff",
+              border: "none",
+            }}
+            onMouseEnter={() => {
+              setHover1(true);
+            }}
+            onMouseLeave={() => {
+              setHover1(false);
+            }}
+          >
+            Create Task Board
+          </Button>
+        </Link>
         <Button
           style={{
             fontSize: "15px",
