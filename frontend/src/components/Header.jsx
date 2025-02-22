@@ -95,26 +95,28 @@ export default function Header({ currentDate }) {
             Create Task Board
           </Button>
         </Link>
-        <Button
-          style={{
-            fontSize: "15px",
-            minHeight: "7vh",
-            width: "150px",
-            fontWeight: "bold",
-            borderRadius: "10px",
-            backgroundColor: hover2 ? "#09B392" : "transparent",
-            border: hover2 ? "none" : "1px solid #09B392",
-            color: hover2 ? "white" : "#09B392",
-          }}
-          onMouseEnter={() => {
-            setHover2(true);
-          }}
-          onMouseLeave={() => {
-            setHover2(false);
-          }}
-        >
-          View My Boards
-        </Button>
+        <Link to="/AllBoards">
+          <Button
+            style={{
+              fontSize: "15px",
+              minHeight: "7vh",
+              width: "150px",
+              fontWeight: "bold",
+              borderRadius: "10px",
+              backgroundColor: hover2 ? "#09B392" : "transparent",
+              border: hover2 ? "none" : "1px solid #09B392",
+              color: hover2 ? "white" : "#09B392",
+            }}
+            onMouseEnter={() => {
+              setHover2(true);
+            }}
+            onMouseLeave={() => {
+              setHover2(false);
+            }}
+          >
+            View My Boards
+          </Button>
+        </Link>
       </div>
     </Card>
   );

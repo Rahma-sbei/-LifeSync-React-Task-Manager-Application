@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import Dimg from "../assets/bgProfile.png";
+import Dimg from "../assets/vecteezy_abstract-technology-futuristic-glowing-blue-and-purple-light_11545796.jpg";
 import { jwtDecode } from "jwt-decode";
 import Pimg from "../assets/bgsc.png";
 import { Button } from "react-bootstrap";
@@ -116,9 +116,9 @@ export default function AllBoards() {
                   letterSpacing: "3px",
                 }}
               >
-                All My Boards
+                My Boards
               </Card.Title>
-              <Card.Text style={{ color: "rgb(43, 13, 175)" }}>
+              <Card.Text style={{ color: "rgb(181, 162, 255)" }}>
                 See All Your Boards
               </Card.Text>
             </div>

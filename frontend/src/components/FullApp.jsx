@@ -47,6 +47,7 @@ export default function FullApp() {
           <Route path="/TaskBoard" element={<TaskBoard />} />
           <Route path="/AllBoards" element={<AllBoards />} />
           <Route path="/OneBoard" element={<OneBoard />} />
+          <Route path="/AllBoards" element={<AllBoards />} />
         </Routes>
         <Footer />
       </div>
