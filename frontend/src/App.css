@@ -301,3 +301,26 @@
   margin-right: 50px !important;
   border: none !important;
 }
+.invitemodall {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: #3b157988;
+  height: 50vh;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+  width: 40vw;
+  border: 2px solid #787ea3;
+  text-align: center;
+  overflow-y: auto;
+}
+.invitemodall.show {
+  display: inline-block;
+}
+.invitemodall ::placeholder {
+  color: #a0a0a0 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
+}

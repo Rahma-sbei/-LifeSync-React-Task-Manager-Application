@@ -6,7 +6,7 @@ import Pimg from "../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { FaUsers, FaListCheck } from "react-icons/fa6";
+import { FaUsers, FaListCheck, FaUserPlus } from "react-icons/fa6";
 import "../App.css";
 import { useLocation } from "react-router-dom";
 export default function OneBoard() {
@@ -25,12 +25,23 @@ export default function OneBoard() {
   const [tasks, setasks] = useState(board.tasks);
 
   useEffect(() => {
-    const url = `http://localhost:6005/api/boardusers/${board._id}`;
+    const urlu = `http://localhost:6005/api/boardusers/${board._id}`;
+    const urlt = `http://localhost:6005/api/boardtasks/${board._id}`;
 
     axios
-      .get(url)
+      .get(urlu)
       .then((res) => {
         setCollaborators(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    axios
+      .get(urlt)
+      .then((res) => {
+        setasks(res.data);
+        console.log(tasks);
       })
       .catch((err) => {
         console.error(err);
@@ -59,6 +70,7 @@ export default function OneBoard() {
         style={{
           marginTop: "60px",
           display: "flex",
+
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
@@ -107,6 +119,9 @@ export default function OneBoard() {
               </Card.Text>
             </div>
           </div>
+          <Button variant="primary" className="profbtn1">
+            Back
+          </Button>
         </Card>
 
         <Card
@@ -115,7 +130,6 @@ export default function OneBoard() {
             paddingTop: "50px",
             paddingBottom: "50px",
 
-            minHeight: "40vh",
             width: "95%",
             borderRadius: "20px",
             border: "none",

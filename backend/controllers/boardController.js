@@ -114,8 +114,21 @@ const getBoardUsers = async (req, res) => {
           return user?.userName;
         })
       );
-
       res.status(200).json(names);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Error getting users", error });
+  }
+};
+const getBoardTasks = async (req, res) => {
+  const boardId = req.params.id;
+  try {
+    const board = await Board.findById(boardId);
+    if (!board) {
+      res.status(404).json({ msg: "Board not found" });
+    } else {
+      res.status(200).json(board.tasks);
     }
   } catch (error) {
     console.error(error);
@@ -129,4 +142,5 @@ module.exports = {
   addTask,
   getBoards,
   getBoardUsers,
+  getBoardTasks,
 };
