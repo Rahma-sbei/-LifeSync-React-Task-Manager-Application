@@ -25,7 +25,7 @@ export default function NavBar() {
     "/Admin": "Admin Dashboard",
     "/TaskBoard": "Create Task Boards",
     "/AllBoards": "View All Task Boards",
-    "/Expenses": "My expense manager",
+    "/Expenses": "Expenses Manager",
   };
   const currentTitle = titles[location.pathname];
 
