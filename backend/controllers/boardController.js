@@ -135,6 +135,15 @@ const getBoardTasks = async (req, res) => {
     res.status(500).json({ msg: "Error getting users", error });
   }
 };
+const deleteBoard = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Board.findByIdAndDelete(id);
+    res.status(200).json({ msg: "Board Successfully deleted" });
+  } catch (error) {
+    res.status(500).json({ msg: "error on deleting task" });
+  }
+};
 
 module.exports = {
   createTaskBoard,
@@ -143,4 +152,5 @@ module.exports = {
   getBoards,
   getBoardUsers,
   getBoardTasks,
+  deleteBoard,
 };

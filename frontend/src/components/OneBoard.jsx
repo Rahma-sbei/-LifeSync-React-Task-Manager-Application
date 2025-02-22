@@ -8,11 +8,11 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { FaUsers, FaListCheck, FaUserPlus } from "react-icons/fa6";
 import "../App.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 export default function OneBoard() {
   const location = useLocation();
   const [collaborators, setCollaborators] = useState([]);
-
+  const navigate = useNavigate();
   const [task, setTask] = useState({ task: " " });
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -119,7 +119,11 @@ export default function OneBoard() {
               </Card.Text>
             </div>
           </div>
-          <Button variant="primary" className="profbtn1">
+          <Button
+            variant="primary"
+            className="profbtn1"
+            onClick={() => navigate("/TaskBoard", { state: { board } })}
+          >
             Back
           </Button>
         </Card>
