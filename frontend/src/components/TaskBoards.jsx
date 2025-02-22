@@ -40,6 +40,23 @@ export default function TaskBoard() {
       });
   };
 
+  const deleteBoard = (boardId) => {
+    const delUrl = `http://localhost:6005/api/boards/${boardId}`;
+    console.log(boardId);
+    if (window.confirm("are you sure you want to delete this board")) {
+      axios
+        .delete(delUrl)
+        .then(() => {
+          setBoards((prevBoards) =>
+            prevBoards.filter((board) => board._id !== boardId)
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -296,6 +313,16 @@ export default function TaskBoard() {
                   >
                     Invite Collaborator
                     <FaPlus size={20} style={{ marginLeft: "5px" }} />
+                  </Button>
+                  <Button
+                    style={{
+                      backgroundColor: "transparent",
+                      border: "none",
+                      fontSize: "25px",
+                    }}
+                    onClick={() => deleteBoard(board._id)}
+                  >
+                    🗑️
                   </Button>
 
                   <div
