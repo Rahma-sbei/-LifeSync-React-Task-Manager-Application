@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import Dimg from "../assets/billing-background-card.png";
+import Dimg from "../assets/pixelcut-export.jpg";
 import Divider from "./Divider";
 import Pimg from "../assets/bgsc.png";
 import { Button } from "react-bootstrap";
@@ -197,15 +197,7 @@ export default function TaskBoard() {
                 }}
               >
                 <Form.Control
-                  style={{
-                    width: "300px",
-                    height: "7vh",
-                    backgroundColor: "rgba(44, 19, 54, 0.5)",
-                    border: "2px outset #a0a0a0",
-                    borderRadius: " 20px",
-                    paddingLeft: "20px",
-                    color: "white",
-                  }}
+                  className="createboard"
                   type="text"
                   placeholder="Task Board Title"
                   onChange={handleChange}

@@ -9,6 +9,18 @@
   width: 27vw !important;
   padding-left: 20px;
 }
+.createboard {
+  width: 300px !important;
+  height: 7vh !important;
+  background-color: rgba(39, 24, 45, 0.5) !important;
+  border: 2px outset #a0a0a0 !important;
+  border-radius: 20px !important;
+  padding-left: 20px !important;
+  color: white !important;
+}
+.createboard::placeholder {
+  color: #a0a0a0 !important;
+}
 .signUpInput::placeholder {
   color: #a0a0a0 !important;
   font-weight: 100;

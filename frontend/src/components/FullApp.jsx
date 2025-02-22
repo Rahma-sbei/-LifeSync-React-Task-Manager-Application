@@ -9,6 +9,7 @@ import TasksPage from "./TasksPage";
 import MyProfile from "./MyProfile";
 import TaskBoard from "./TaskBoards";
 import AllBoards from "./AllBoards";
+import OneBoard from "./OneBoard";
 
 export const UserContext = createContext();
 
@@ -45,6 +46,7 @@ export default function FullApp() {
           <Route path="/Profile" element={<MyProfile />} />
           <Route path="/TaskBoard" element={<TaskBoard />} />
           <Route path="/AllBoards" element={<AllBoards />} />
+          <Route path="/OneBoard" element={<OneBoard />} />
         </Routes>
         <Footer />
       </div>
