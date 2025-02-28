@@ -324,3 +324,14 @@
   font-weight: 100;
   letter-spacing: 2px;
 }
+.landing {
+  background-color: rgb(54, 23, 79);
+  border-bottom-left-radius: 70px;
+  width: 50vw;
+  height: 75vh;
+  border-bottom-right-radius: 70px;
+  transform: rotate(-5deg);
+  overflow: hidden;
+  position: absolute;
+  top: 1000px !important;
+}

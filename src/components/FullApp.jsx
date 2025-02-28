@@ -10,11 +10,13 @@ import MyProfile from "./MyProfile";
 import TaskBoard from "./TaskBoards";
 import AllBoards from "./AllBoards";
 import OneBoard from "./OneBoard";
+import Expenses from "./Expenses";
+import LandingPage from "./LandingPage";
 
 export const UserContext = createContext();
 
 export default function FullApp() {
-  const noNavBarPages = ["/", "/signIn"];
+  const noNavBarPages = ["/", "/signIn", "/signUp"];
   const [currentUser, setCurrentUser] = useState(null);
   const location = useLocation();
 
@@ -38,10 +40,13 @@ export default function FullApp() {
         }}
       >
         {!noNavBarPages.includes(location.pathname) && <NavBar />}
+
         <Routes>
-          <Route path="/" element={<SignUp />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signUp" element={<SignUp />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/Home" element={<HomePage />} />
+          <Route path="/Expenses" element={<Expenses />} />
           <Route path="/Tasks" element={<TasksPage />} />
           <Route path="/Profile" element={<MyProfile />} />
           <Route path="/TaskBoard" element={<TaskBoard />} />
@@ -49,6 +54,7 @@ export default function FullApp() {
           <Route path="/OneBoard" element={<OneBoard />} />
           <Route path="/AllBoards" element={<AllBoards />} />
         </Routes>
+
         <Footer />
       </div>
     </UserContext.Provider>
