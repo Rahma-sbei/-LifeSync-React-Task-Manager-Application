@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -30,6 +30,32 @@ export default function NavBar() {
   const currentTitle = titles[location.pathname];
   const [role, setRole] = useState(null);
   const [userId, setUserId] = useState(null);
+
+  const url = "http://localhost:6005/api/users";
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        setUserId(decodedToken.id);
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+    if (userId) {
+      const headers = {
+        Authorization: `Bearer ${token}`,
+      };
+      axios
+        .get(`${url}/${userId}`, { headers })
+        .then((res) => {
+          setRole(res.data.user.role);
+        })
+        .catch((error) => {
+          console.error(error.response.data.msg);
+        });
+    }
+  }, [userId]);
 
   return (
     <Navbar>
