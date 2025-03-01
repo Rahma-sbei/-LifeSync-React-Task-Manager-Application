@@ -62,7 +62,7 @@ export default function Header({ currentDate }) {
           >
             My Tasks Manager
           </Card.Title>
-          <Card.Text style={{ color: "#9D5AFF" }}>{currentDate}</Card.Text>
+          <Card.Text style={{ color: " #9D5AFF" }}>{currentDate}</Card.Text>
         </div>
       </div>
       <div
