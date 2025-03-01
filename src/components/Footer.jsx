@@ -15,7 +15,6 @@ export default function Footer() {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        paddingTop: "40px",
         paddingBottom: "10px",
       }}
     >

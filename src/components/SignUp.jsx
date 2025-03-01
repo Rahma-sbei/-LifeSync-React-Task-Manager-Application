@@ -140,7 +140,7 @@ export default function SignUp() {
                   letterSpacing: "1.5px",
                 }}
               >
-                Already have an account?{" "}
+                Already have an account?
                 <Link
                   to="/signIn"
                   style={{

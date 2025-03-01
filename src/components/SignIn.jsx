@@ -141,9 +141,9 @@ export default function SignIn() {
                   letterSpacing: "1.5px",
                 }}
               >
-                Forgot your password?
+                Don't have an account yet?
                 <Link
-                  to="/"
+                  to="/signUp"
                   style={{
                     fontSize: "15px",
                     fontWeight: "700",
@@ -152,7 +152,7 @@ export default function SignIn() {
                     marginLeft: "5px",
                   }}
                 >
-                  reset password
+                  Create an account
                 </Link>
               </p>
             </div>
