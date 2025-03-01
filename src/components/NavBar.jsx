@@ -10,7 +10,7 @@ import Divider from "./Divider";
 import { Navs, Prof } from "./Navs";
 import { Link, useLocation } from "react-router-dom";
 import "../App.css";
-import { FaUser, FaBell, FaBars } from "react-icons/fa";
+import { FaUser, FaBell, FaBars, FaUserTie } from "react-icons/fa";
 import { OffcanvasTitle } from "react-bootstrap";
 import { ShowContext } from "../App";
 
@@ -28,6 +28,8 @@ export default function NavBar() {
     "/Expenses": "Expenses Manager",
   };
   const currentTitle = titles[location.pathname];
+  const [role, setRole] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   return (
     <Navbar>
@@ -64,6 +66,35 @@ export default function NavBar() {
               alignItems: "center",
             }}
           >
+            {role === "admin" && (
+              <Link to="/Admin" style={{ textDecoration: "none" }}>
+                <Button
+                  variant="outlined-dark"
+                  style={{
+                    outline: "none",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    {" "}
+                    <FaUserTie
+                      size={18}
+                      style={{ color: "white", marginRight: "10px" }}
+                    />
+                    <Form.Text
+                      style={{
+                        color: "white",
+                        marginBottom: "6px",
+                        fontWeight: "bold",
+                        fontSize: "17px",
+                      }}
+                    >
+                      Admin Dashboard
+                    </Form.Text>
+                  </div>
+                </Button>
+              </Link>
+            )}
             <Link to="/Profile" style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined-dark"
