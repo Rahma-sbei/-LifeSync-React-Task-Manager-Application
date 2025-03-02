@@ -1,16 +1,59 @@
-import React from "react";
-import { Pie } from "react-chartjs-2";
+import React, { useEffect, useState } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
+import { Pie } from "react-chartjs-2";
 import { Card } from "react-bootstrap";
 import sc from "../assets/bgProfile.png";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function TaskChart() {
+  const [tasks, setTasks] = useState([]);
+
+  const url = "http://localhost:6005/api/tasks";
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
+
+        axios
+          .get(url)
+          .then((response) => {
+            const tasksFromDb = response.data;
+            const userTasks = tasksFromDb.filter(
+              (task) => task.userId === userId
+            );
+            setTasks(userTasks);
+          })
+          .catch((error) => {
+            console.error("Error fetching tasks:", error);
+          });
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+  }, []);
+
+  const countTasksByStatus = () => {
+    let complete = 0;
+    let incomplete = 0;
+    tasks.forEach((task) => {
+      if (task.status === "Complete") {
+        complete += 1;
+      } else {
+        incomplete += 1;
+      }
+    });
+    return [complete, incomplete];
+  };
+
   const data = {
     labels: ["Complete", "Incomplete"],
     datasets: [
       {
         label: "Tasks",
-        data: [12, 20],
+        data: countTasksByStatus(),
         backgroundColor: ["rgba(8, 13, 42, 0.78)", "rgba(100, 0, 109, 0.62)"],
         borderWidth: 2,
         borderColor: "white",
@@ -70,7 +113,6 @@ export default function TaskChart() {
           marginTop: "25px",
           marginBottom: "0px",
           marginLeft: "20px",
-          letterSpacing: "2px",
         }}
       >
         My Task Progress
@@ -82,7 +124,6 @@ export default function TaskChart() {
           color: "#CFCDEB",
           marginTop: "0px",
           marginLeft: "20px",
-          letterSpacing: "3px",
         }}
       >
         Keep track of your progress to stay motivated !{" "}
