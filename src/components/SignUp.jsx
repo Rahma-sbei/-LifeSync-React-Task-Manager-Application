@@ -41,8 +41,28 @@ export default function SignUp() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
       }}
     >
+      <div style={{ width: "100%", paddingLeft: "20px" }}>
+        <Link
+          to="/"
+          style={{
+            marginTop: "0px",
+            display: "flex",
+            alignItems: "start",
+            textDecoration: "none",
+          }}
+        >
+          <Button
+            className="btn1"
+            style={{ width: "125px", letterSpacing: "1px", marginTop: "0px" }}
+          >
+            {"<"} Go Back
+          </Button>
+        </Link>
+      </div>
+
       <MDBCard
         style={{
           height: "600px",

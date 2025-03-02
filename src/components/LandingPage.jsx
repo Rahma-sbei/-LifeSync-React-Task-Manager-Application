@@ -64,9 +64,22 @@ export default function LandingPage() {
           display: "flex",
           width: "100%",
           alignItems: "center",
-          justifyContent: "end",
+          justifyContent: "space-between",
         }}
       >
+        <Card.Text
+          style={{
+            fontSize: "20px",
+            fontWeight: "200",
+            color: "#09b392",
+            marginTop: "30px",
+            fontFamily: "Candara",
+            letterSpacing: "2px",
+            marginLeft: "250px",
+          }}
+        >
+          LifeSync
+        </Card.Text>
         <div
           style={{
             display: "flex",

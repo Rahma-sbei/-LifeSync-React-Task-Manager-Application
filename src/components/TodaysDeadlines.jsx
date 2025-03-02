@@ -109,35 +109,54 @@ export default function TodaysDeadLines() {
           padding: "0",
         }}
       >
-        {deadlines.map((item) => (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "90%",
-              alignItems: "center",
-            }}
-          >
-            <Card.Text
-              style={{ color: "#aaa", fontWeight: "bold", paddingTop: "10px" }}
+        {deadlines.length > 0 ? (
+          deadlines.map((item) => (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "90%",
+                alignItems: "center",
+              }}
             >
-              {item}
-            </Card.Text>
-            <Link to="/Tasks">
-              <Button
-                variant="outlined-dark"
+              <Card.Text
                 style={{
-                  backgroundColor: "#09B392",
-                  color: "white",
+                  color: "#aaa",
                   fontWeight: "bold",
-                  borderRadius: "10px",
+                  paddingTop: "10px",
                 }}
               >
-                View Task
-              </Button>
-            </Link>
-          </div>
-        ))}
+                {item.taskName}
+              </Card.Text>
+              <Link to="/Tasks">
+                <Button
+                  variant="outlined-dark"
+                  style={{
+                    backgroundColor: "#09B392",
+                    color: "white",
+                    fontWeight: "bold",
+                    borderRadius: "10px",
+                  }}
+                >
+                  View Task
+                </Button>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <Card.Text
+            style={{
+              fontSize: "30px",
+              fontWeight: "bold",
+              letterSpacing: "3px",
+              color: "#aaa",
+              marginLeft: "45px",
+              marginTop: "30px",
+            }}
+          >
+            No Deadlines For Today
+          </Card.Text>
+        )}
       </div>
     </Card>
   );
