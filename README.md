@@ -50,8 +50,6 @@ JWT_SECRET=your_jwt_secret_key
 
 Then to start the application:
 
-<ol>
-  <li>Navigate to the project root and run <strong>npm start</strong> to launch the React frontend.</li>
-  <li>Move into the backend folder and run <strong>npm start</strong> to start the Express server.</li>
-  <li>Wait for the backend to establish a connection with the database.</li>
-</ol>
+1. Navigate to the project root and run `npm start` to launch the React frontend.
+2. Move into the backend folder and run `npm start` to start the Express server.
+3. Wait for the backend to establish a connection with the database.
