@@ -1,4 +1,4 @@
-# :blue_book:Welcome to LifeSync:star:
+<h1 align="center">📘 Welcome to LifeSync ⭐</h1>
 
 <img src="./src/assets/home.png" alt="Alt text" width="800">
 
