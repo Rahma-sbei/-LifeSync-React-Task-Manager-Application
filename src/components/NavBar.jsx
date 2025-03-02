@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -13,6 +13,8 @@ import "../App.css";
 import { FaUser, FaBell, FaBars, FaUserTie } from "react-icons/fa";
 import { OffcanvasTitle } from "react-bootstrap";
 import { ShowContext } from "../App";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function NavBar() {
   const { handleShow, handleClose, show } = useContext(ShowContext);

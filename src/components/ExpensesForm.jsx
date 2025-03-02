@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ExpenseForm = ({ addExpense }) => {
+export default function ExpenseForm({ addExpense }) {
   const [expense, setExpense] = useState({
     date: "",
     description: "",
@@ -83,6 +83,4 @@ const ExpenseForm = ({ addExpense }) => {
       </button>
     </form>
   );
-};
-
-export default ExpenseForm;
+}
