@@ -13,6 +13,7 @@ import OneBoard from "./OneBoard";
 import Expenses from "./Expenses";
 import LandingPage from "./LandingPage";
 import Admin from "./Admin";
+import PrivateRoute from "./PrivateRoute";
 
 export const UserContext = createContext();
 
@@ -54,7 +55,14 @@ export default function FullApp() {
           <Route path="/AllBoards" element={<AllBoards />} />
           <Route path="/OneBoard" element={<OneBoard />} />
           <Route path="/AllBoards" element={<AllBoards />} />
-          <Route path="/Admin" element={<Admin />} />
+          <Route
+            path="/Admin"
+            element={
+              <PrivateRoute allowedRoles={["admin"]}>
+                <Admin />
+              </PrivateRoute>
+            }
+          />
         </Routes>
 
         <Footer />
