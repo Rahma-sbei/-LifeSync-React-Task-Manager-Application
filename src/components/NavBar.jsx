@@ -180,7 +180,7 @@ export default function NavBar() {
               <OffcanvasTitle
                 style={{
                   color: "white",
-                  marginTop: "10px",
+                  marginTop: "30px",
                   fontSize: "20px",
                   fontWeight: "bold",
                   marginLeft: "40px",
@@ -192,7 +192,7 @@ export default function NavBar() {
                 Pages
               </OffcanvasTitle>
 
-              <Offcanvas.Body style={{ paddingTop: "3px" }}>
+              <Offcanvas.Body style={{ paddingTop: "5px" }}>
                 <Divider />
                 <div
                   style={{
@@ -207,7 +207,8 @@ export default function NavBar() {
                       flexDirection: "column",
                       justifyContent: "start",
                       marginTop: "10px",
-                      marginBottom: "20px",
+                      marginBottom: "10px",
+                      gap: "10px",
                     }}
                   >
                     {Navs.map((navItem) => (
@@ -255,6 +256,7 @@ export default function NavBar() {
                     >
                       Account Pages
                     </OffcanvasTitle>
+
                     {Prof.map((profItem) => (
                       <Link
                         to={profItem.path}
@@ -267,6 +269,7 @@ export default function NavBar() {
                           style={{
                             display: "flex",
                             flexDirection: "row",
+                            marginBottom: "10px",
                           }}
                         >
                           <div>{profItem.icon}</div>
