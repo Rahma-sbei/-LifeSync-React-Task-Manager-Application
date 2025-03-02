@@ -24,16 +24,16 @@ This website uses the MERN framework
   <li><strong>Code Editor and Tools:</strong> VS Code</li>
 </ul>
 
-### Overview :rocket:
+## Overview :rocket:
 
 LifeSync is a full-stack web application designed for life organization through a suite of powerful features.It is currently a non-commercial project, and serves as a learning opportunity to explore and showcase various full-stack development strategies and technologies.
 
-### Features :hammer_and_wrench:
+## Features :hammer_and_wrench:
 
 <ul>
-  <li><strong>Task Manager:</strong>personilized to-do lists organized per week days.</li>
-  <li><strong>Collaboration Boards:</strong>collaborative tool to share tasks with people.</li>
-  <li><strong>Expenses Manager:</strong>budget monitoring tool</li>
-  <li><strong>Dashboard:</strong>dynamic dashboard providing relevant statistics</li>
-  <li><strong>Role based access:</strong>admin-specific privileges</li>
+  <li><strong>Task Manager:</strong> personilized to-do lists organized per week days.</li>
+  <li><strong>Collaboration Boards:</strong> collaborative tool to share tasks with people.</li>
+  <li><strong>Expenses Manager:</strong> budget monitoring tool</li>
+  <li><strong>Dashboard:</strong> dynamic dashboard providing relevant statistics</li>
+  <li><strong>Role based access:</strong> admin-specific privileges</li>
 </ul>
