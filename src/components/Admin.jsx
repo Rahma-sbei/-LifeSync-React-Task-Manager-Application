@@ -6,10 +6,10 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import { Card } from "react-bootstrap";
 import { FaUserTie } from "react-icons/fa6";
-import Dimg from "./cardimgfree22.png";
-import Pimg from "./bgsc.png";
+import Dimg from "../assets/6467580.jpg";
+import Pimg from "../assets/bgsc.png";
 import { jwtDecode } from "jwt-decode";
-import imgg from "./bgProfile.png";
+import imgg from "../assets/5436943.jpg";
 
 export default function Admin() {
   const url = "http://localhost:6005/api/users";

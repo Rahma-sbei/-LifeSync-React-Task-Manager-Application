@@ -12,6 +12,7 @@ import AllBoards from "./AllBoards";
 import OneBoard from "./OneBoard";
 import Expenses from "./Expenses";
 import LandingPage from "./LandingPage";
+import Admin from "./Admin";
 
 export const UserContext = createContext();
 
@@ -24,7 +25,7 @@ export default function FullApp() {
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div
         style={{
-          background: "#080D2A",
+          background: " #080D2A",
           backgroundImage: `
         radial-gradient(ellipse at center top, #1B1B37 0%, rgba(4, 7, 26, 0.2) 50%),
         radial-gradient(ellipse at 60% 50%, #3436A8 0%, rgba(27, 27, 54, 0.15) 70%),
@@ -53,6 +54,7 @@ export default function FullApp() {
           <Route path="/AllBoards" element={<AllBoards />} />
           <Route path="/OneBoard" element={<OneBoard />} />
           <Route path="/AllBoards" element={<AllBoards />} />
+          <Route path="/Admin" element={<Admin />} />
         </Routes>
 
         <Footer />
