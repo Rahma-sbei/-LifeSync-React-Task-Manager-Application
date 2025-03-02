@@ -1,4 +1,4 @@
-const Expense = require("../models/Expense");
+const Expense = require("../models/Expenses");
 require("dotenv").config();
 const getExpenses = async (request, response) => {
   try {

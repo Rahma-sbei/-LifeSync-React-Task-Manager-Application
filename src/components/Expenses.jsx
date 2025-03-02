@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import ExpenseForm from "./ExpensesForm";
+import React, { useEffect, useState } from "react";
+import ExpenseForm from "./ExpenseForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dimg from "../assets/bgsc.png";
 import Dimg2 from "../assets/BackgroundCard1.png";
 import { Card, Button } from "react-bootstrap";
 import { FaMoneyCheckDollar } from "react-icons/fa6";
+
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const Expenses = () => {
   const [expenses, setExpenses] = useState([]);
@@ -15,12 +18,93 @@ const Expenses = () => {
     status: "",
   });
 
+  const url = "http://localhost:6005/api/expenses";
+  const getExpenses = () => {
+    const token = localStorage.getItem("token");
+    let id;
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        id = decodedToken.id;
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+    console.log(id);
+    axios
+      .get(url)
+      .then((res) => {
+        console.log(res.data.expenses);
+        console.log("user id ", id);
+
+        const myExpenses = res.data.expenses.filter((exp) => exp.userId === id);
+        setExpenses(myExpenses);
+        console.log("my expenses", expenses);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    getExpenses();
+  }, []);
+
   const addExpense = (expense) => {
-    setExpenses((prev) => [...prev, expense]);
+    const token = localStorage.getItem("token");
+    let id;
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        id = decodedToken.id;
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+    console.log(id);
+    const fullExpense = { ...expense, userId: id };
+    console.log("in adding function", fullExpense);
+
+    axios
+      .post(url, fullExpense)
+      .then((response) => {
+        console.log(response.data);
+        alert(response.data.msg);
+        window.location.reload();
+      })
+      .catch((error) => {
+        alert(error);
+        console.error("Error on adding task");
+      });
+  };
+
+  const editExpense = (id, updatedExpense) => {
+    console.log("Button clicked", updatedExpense);
+    axios
+      .put(`${url}/${id}`, updatedExpense)
+      .then((response) => {
+        console.log(response.data);
+        setExpenses((prevExpenses) =>
+          prevExpenses.map((expense) =>
+            expense._id === id ? { ...expense, ...updatedExpense } : expense
+          )
+        );
+      })
+      .catch((error) => {
+        alert(error);
+        console.error("Error on adding task");
+      });
   };
 
   const deleteExpense = (id) => {
-    setExpenses(expenses.filter((expense) => expense._id !== id));
+    axios
+      .delete(`http://localhost:8008/api/expenses/${id}`)
+      .then((res) => {
+        setExpenses(expenses.filter((expense) => expense._id !== id));
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   const calculateTotal = () => {
@@ -203,7 +287,15 @@ const Expenses = () => {
                 <td>{expense.amount}</td>
                 <td>{expense.status ? "Paid" : "Unpaid"}</td>
                 <td>
-                  <Button className="btn btn-warning btn-sm mr-2">
+                  <Button
+                    className="btn btn-warning btn-sm mr-2"
+                    onClick={() =>
+                      editExpense(expense._id, {
+                        ...expense,
+                        status: !expense.status,
+                      })
+                    }
+                  >
                     Toggle Status
                   </Button>
                   <button
