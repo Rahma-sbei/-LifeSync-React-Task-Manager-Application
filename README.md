@@ -1,6 +1,6 @@
 # :blue_book:Welcome to LifeSync:star:
 
-<img src="./src/assets/home.png" alt="Alt text" width="300">
+<img src="./src/assets/home.png" alt="Alt text" width="800">
 
 ## Available Scripts
 
