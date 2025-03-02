@@ -40,7 +40,7 @@ LifeSync is a full-stack web application designed for life organization through 
 
 ## Running :hammer_and_wrench:
 
-After cloning the project locally, Create a `.env` file in the **backend** folder and add the following variables:
+After cloning the project locally, create a `.env` file in the **backend** folder and add the following variables:
 
 ```env
 URL=your_mongodb_cluster_url
