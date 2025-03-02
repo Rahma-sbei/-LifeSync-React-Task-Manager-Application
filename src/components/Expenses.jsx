@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dimg from "../assets/bgsc.png";
 import Dimg2 from "../assets/BackgroundCard1.png";
 import { Card, Button } from "react-bootstrap";
-import { FaMoneyCheckDollar } from "react-icons/fa6";
+import { FaMoneyCheckDollar, FaFilter } from "react-icons/fa6";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import ExpenseForm from "./ExpensesForm";
@@ -250,25 +250,46 @@ const Expenses = () => {
           <input
             type="date"
             name="date"
-            className="expensefilter"
             placeholder="Filter by date"
             value={filter.date}
             onChange={handleFilterChange}
+            style={{
+              borderRadius: "20px",
+              backgroundColor: "#2b1c43a7",
+              border: " 2px outset #a0a0a0",
+              padding: "10px 20px",
+              color: "#aaa",
+              fontSize: "15px",
+              fontWeight: "600",
+              letterSpacing: "1px",
+            }}
           />
 
           <select
             name="status"
-            className="expensefilter"
             value={filter.status}
             onChange={handleFilterChange}
+            style={{
+              borderRadius: "20px",
+              backgroundColor: "#2b1c43a7",
+              border: " 2px outset #a0a0a0",
+              padding: "10px 20px",
+              color: "#aaa",
+              fontSize: "15px",
+              fontWeight: "600",
+              letterSpacing: "1px",
+            }}
           >
-            <option value="">Filter by status</option>
+            <option value="">Filter By Status</option>
             <option value="Paid">Paid</option>
             <option value="Unpaid">Unpaid</option>
           </select>
         </div>
 
-        <table className="table table-bordered table-striped mt-3">
+        <table
+          className="table table-bordered table-striped mt-3"
+          style={{ border: "1px solid #2b1c43a7", borderRadius: "20px" }}
+        >
           <thead className="thead-light">
             <tr>
               <th>Date</th>

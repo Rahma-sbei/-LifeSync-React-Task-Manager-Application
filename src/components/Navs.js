@@ -23,11 +23,6 @@ export const Navs = [
     icon: <FaMoneyCheckDollar size={21} className="icon" />,
     path: "/Expenses",
   },
-  {
-    title: "Calender",
-    icon: <FaCalendar size={21} className="icon" />,
-    path: "/Calendar",
-  },
 ];
 
 export const Prof = [
