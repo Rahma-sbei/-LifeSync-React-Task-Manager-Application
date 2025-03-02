@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 export default function TodaysDeadLines() {
   const fullDay = new Date().toLocaleDateString("en-US", {
@@ -12,14 +14,43 @@ export default function TodaysDeadLines() {
     day: "numeric",
   });
 
-  const deadlines = [
-    "task 1",
-    "task 2",
-    "task 3",
-    "task 4",
-    "task 5",
-    "task 5",
-  ];
+  const today = new Date()
+    .toLocaleDateString("en-US", {
+      year: "numeric",
+      day: "2-digit",
+      month: "2-digit",
+    })
+    .replace(/\//g, "-");
+  const [deadlines, setDeadlines] = useState([]);
+
+  const url = "http://localhost:6005/api/tasks";
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        const userId = decodedToken.id;
+
+        axios
+          .get(url)
+          .then((response) => {
+            const tasksFromDb = response.data;
+            const userTasks = tasksFromDb.filter(
+              (task) => task.userId === userId
+            );
+            const todaysTasks = userTasks.filter(
+              (task) => task.deadline === today
+            );
+            setDeadlines(todaysTasks);
+          })
+          .catch((error) => {
+            console.error("Error fetching tasks:", error);
+          });
+      } catch (error) {
+        console.error("Token decoding error:", error);
+      }
+    }
+  }, []);
 
   return (
     <Card
