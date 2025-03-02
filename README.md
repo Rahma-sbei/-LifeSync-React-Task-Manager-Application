@@ -1,8 +1,6 @@
-# Welcome to LifeSync
+# :blue_book:Welcome to LifeSync:star:
 
-![Alt text](assets/home.png)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="./src/assets/home.png" alt="Alt text" width="300">
 
 ## Available Scripts
 
