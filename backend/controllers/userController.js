@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
+// Get list of all users saved in the database
 const getUsers = async (request, response) => {
   try {
     const users = await User.find();
@@ -16,10 +18,11 @@ const getUsers = async (request, response) => {
   }
 };
 
+// Get only one user based on the specified id
 const getOneUser = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
   try {
+    //find user in the mongoDb tadabese by its id
     const foundUser = await User.findById(id);
     if (foundUser) {
       res.status(200).json({ user: foundUser });
@@ -31,32 +34,36 @@ const getOneUser = async (req, res) => {
   }
 };
 
+//Post a given new user to the database
 const postUser = async (request, response) => {
   const user = request.body;
   try {
     const foundUser = await User.findOne({ email: user.email });
     if (foundUser) {
-      response.status(400).json({ msg: "user already exist" });
+      response.status(400).json({ msg: "User already exists" });
     } else {
-      const newUser = new User(user);
-      console.log(newUser);
+      const hashedPassword = await bcrypt.hash(user.password, 10); //encrypt passwords for secure processing
+      const newUser = new User({ ...user, password: hashedPassword });
       await newUser.save();
       response
         .status(200)
-        .json({ user: newUser, msg: " user successfully added" });
+        .json({ user: newUser, msg: "User successfully added" });
     }
   } catch (error) {
     console.error(error);
-    response.status(500).json({ msg: "error on adding user" });
+    response.status(500).json({ msg: "Error on adding user" });
   }
 };
 
+//Signing an existing user in
 const signIn = async (req, res) => {
   const user = req.body;
   try {
     const foundUser = await User.findOne({ email: user.email });
     if (foundUser) {
-      if (user.password === foundUser.password) {
+      const isMatch = await bcrypt.compare(user.password, foundUser.password); //Compare given password with stored hashed password
+      if (isMatch) {
+        //generate a JWT token with user's ID and role
         const token = jwt.sign(
           { id: foundUser._id, role: foundUser.role },
           process.env.JWT_SECRET
@@ -74,13 +81,14 @@ const signIn = async (req, res) => {
   }
 };
 
+// Update an existing user using a put request
 const putUser = async (req, res) => {
   const id = req.params.id;
   const user = req.body;
   console.log(user);
   try {
     await User.findByIdAndUpdate(id, user);
-    res.status(200).json({ msg: "update success" });
+    res.status(200).json({ msg: "update successful" });
   } catch (error) {
     res.status(500).json({ msg: "error on updating user" });
   }
