@@ -10,10 +10,11 @@ const expenseRoute = require("./routes/expenseRoute");
 
 dotenv.config();
 
-const port = process.env.PORT;
-connectDb();
-app.use(cors());
+const port = process.env.PORT; // get port
+connectDb(); //connect to mongo atlas database
+app.use(cors()); //invoque cors for cross origin resource sharing
 
+//start server
 app.listen(port, (error) => {
   if (error) {
     console.log("Server Failed");
@@ -21,6 +22,7 @@ app.listen(port, (error) => {
     console.log(`Server Started on port ${port}`);
   }
 });
+
 app.use(express.json());
 app.use("/api", userRoute);
 app.use("/api", taskRoute);

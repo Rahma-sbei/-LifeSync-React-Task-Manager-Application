@@ -1,6 +1,7 @@
 const express = require("express");
 const taskRoute = express.Router();
 
+//import function from controller
 const {
   postTask,
   getTasks,
@@ -9,6 +10,7 @@ const {
   getOneTask,
 } = require("../controllers/taskController");
 
+//define routes
 taskRoute.get("/tasks", getTasks);
 taskRoute.get("/tasks/:id", getOneTask);
 taskRoute.post("/tasks", postTask);

@@ -1,6 +1,7 @@
 const express = require("express");
 const boardRoute = express.Router();
 
+//import function from controller
 const {
   createTaskBoard,
   inviteUser,
@@ -11,6 +12,7 @@ const {
   deleteBoard,
 } = require("../controllers/boardController");
 
+//define routes
 boardRoute.get("/boards", getBoards);
 boardRoute.get("/boardusers/:id", getBoardUsers);
 boardRoute.get("/boardtasks/:id", getBoardTasks);

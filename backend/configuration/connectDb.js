@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-const url = process.env.URL;
+const url = process.env.URL; //get db connection url
 
 const mongoose = require("mongoose");
 
