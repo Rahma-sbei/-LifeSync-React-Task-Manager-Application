@@ -1,10 +1,11 @@
 const Task = require("../models/Task");
 require("dotenv").config();
 
+//Posting a task to the database
 const postTask = async (req, res) => {
-  const task = req.body;
+  const task = req.body; // get task from body
   try {
-    const newTask = new Task(task);
+    const newTask = new Task(task); //create a new Task document using the given data
     await newTask.save();
 
     res.status(200).json({ task: newTask, msg: " task successfully added" });
@@ -14,16 +15,18 @@ const postTask = async (req, res) => {
   }
 };
 
+//Toggle the status of the task
 const updateTaskStatus = async (req, res) => {
   const taskId = req.params.id;
   try {
-    const task = await Task.findById(taskId);
+    const task = await Task.findById(taskId); // find the task by the given id
     if (!task) {
       return res.status(404).json({ msg: "Task not found" });
     }
 
+    //toggle the staus of the task
     task.status = task.status === "Incomplete" ? "Complete" : "Incomplete";
-    await task.save();
+    await task.save(); //save changes
 
     res.status(200).json({ task, msg: "Task status updated successfully" });
   } catch (error) {
@@ -32,6 +35,7 @@ const updateTaskStatus = async (req, res) => {
   }
 };
 
+//get list of all tasks in the database
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -46,8 +50,10 @@ const getTasks = async (req, res) => {
     console.log("error retrieving tasks", error);
   }
 };
+
+//find a specific task based of the given id
 const getOneTask = async (req, res) => {
-  const taskId = req.params.id;
+  const taskId = req.params.id; //get id as part of the URL
   try {
     const task = await Task.findById(taskId);
     if (task) {
