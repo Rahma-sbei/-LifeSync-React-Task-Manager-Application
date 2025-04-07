@@ -8,7 +8,7 @@ import axios from "axios";
 import { FaUsers, FaListCheck } from "react-icons/fa6";
 import "../App.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import Divider from "./Divider";
+import Divider from "../Divider";
 
 export default function AllBoards() {
   const [boards, setBoards] = useState([]); // State to hold boards of the current user

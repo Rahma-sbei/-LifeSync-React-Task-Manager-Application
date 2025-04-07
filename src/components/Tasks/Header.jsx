@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
+//this is the header for the tasks page
 export default function Header({ currentDate }) {
   const [hover1, setHover1] = useState(false);
   const [hover2, setHover2] = useState(false);
