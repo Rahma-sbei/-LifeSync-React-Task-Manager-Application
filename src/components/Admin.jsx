@@ -13,10 +13,12 @@ import imgg from "../assets/5436943.jpg";
 
 export default function Admin() {
   const url = "http://localhost:6005/api/users";
-  const [users, setUsers] = useState([]);
-  const [currentUser, setcurrentUser] = useState({});
-  const [userId, setUserId] = useState(null);
 
+  const [users, setUsers] = useState([]); // State to store the list of users
+  const [currentUser, setcurrentUser] = useState({}); // State to store the currently logged-in user object
+  const [userId, setUserId] = useState(null); // State to store the current user's ID (from token)
+
+  //get all users from the API on initial render
   useEffect(() => {
     axios
       .get(url)
@@ -29,18 +31,22 @@ export default function Admin() {
       });
   }, []);
 
+  // Decode token and fetch current user info based on token
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log(token);
+
     if (token) {
       try {
-        const decodedToken = jwtDecode(token);
+        const decodedToken = jwtDecode(token); // Decode JWT token
         console.log("this is the decode token", decodedToken);
-        setUserId(decodedToken.id);
+        setUserId(decodedToken.id); // Save userId from decoded token
       } catch (error) {
         console.error("Token decoding error:", error);
       }
     }
+
+    //now get the current user's info based on the userId
     if (userId) {
       const headers = {
         Authorization: `Bearer ${token}`,
@@ -48,7 +54,7 @@ export default function Admin() {
       axios
         .get(`${url}/${userId}`, { headers })
         .then((res) => {
-          setcurrentUser(res.data.user);
+          setcurrentUser(res.data.user); // Set current user info
           console.log("this is the username", currentUser.userName);
         })
         .catch((error) => {
@@ -57,6 +63,7 @@ export default function Admin() {
     }
   }, [userId]);
 
+  //deleting an existing user
   const handleDelete = (userId) => {
     if (window.confirm("are you sure you want to delete this user")) {
       const headers = {
@@ -65,7 +72,7 @@ export default function Admin() {
       axios
         .delete(`${url}/${userId}`, { headers })
         .then((res) => {
-          setUsers(users.filter((user) => user._id !== userId));
+          setUsers(users.filter((user) => user._id !== userId)); //removing user from UI by updating the state
         })
         .catch((error) => {
           console.error(error.response.data.msg);
@@ -161,6 +168,7 @@ export default function Admin() {
           gap: "50px",
         }}
       >
+        {/*accordion with all users*/}
         {users.map((user) => (
           <Accordion>
             <Accordion.Item

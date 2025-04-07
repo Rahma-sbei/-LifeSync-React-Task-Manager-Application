@@ -3,6 +3,7 @@ import ss2 from "../assets/ss2.png";
 import "../App.css";
 
 export default function DateNavigation({ onDayClick, selectedDay }) {
+  // each numeric string (day) has a corresponding weekday label
   const days = [
     { day: "01", label: "M" },
     { day: "02", label: "T" },
@@ -28,11 +29,12 @@ export default function DateNavigation({ onDayClick, selectedDay }) {
         height: "100px",
       }}
     >
+      {/* Map over each day object and render it as a clickable date item */}
       {days.map(({ day, label }) => (
         <div
           key={day}
           className={`date-item ${selectedDay === day ? "selected" : ""}`}
-          onClick={() => onDayClick(day)}
+          onClick={() => onDayClick(day)} // Trigger the parent handler when a day is clicked
         >
           <div className="date-number">{day}</div>
           <div className="date-label">{label}</div>

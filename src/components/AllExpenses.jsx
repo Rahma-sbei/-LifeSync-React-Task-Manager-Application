@@ -10,23 +10,24 @@ export default function AllExpenses() {
   const data = {
     datasets: [
       {
-        data: [480, 150],
+        data: [480, 150], // hardcoded data for demonstarion purposes
         backgroundColor: ["#09B392", "transparent"],
         borderWidth: 0,
       },
     ],
   };
 
+  //set chart options
   const options = {
-    cutout: "75%",
+    cutout: "75%", //cutting out 75% of the center
     responsive: true,
     plugins: {
       legend: {
-        display: "none",
+        display: "none", // Hides the legend , we will be handling the labeling manually
       },
       centerText: {
         display: true,
-        text: "Resting\n70.58%",
+        text: "Resting\n70.58%", // Multiline text to be drawn in the center of the chart
       },
     },
     elements: {
@@ -35,31 +36,33 @@ export default function AllExpenses() {
       },
     },
   };
+
+  // Custom Chart.js plugin to render text in the center of the doughnut
   const centerTextPlugin = {
     id: "centerText",
     beforeDraw: (chart) => {
-      const { ctx } = chart;
-      const centerX = chart.width / 2;
-      const centerY = chart.height / 2;
+      const { ctx } = chart; // Get drawing context
+      const centerX = chart.width / 2; // Horizontal center of canvas
+      const centerY = chart.height / 2; // Vertical center of canvas
 
-      const text = chart.config.options.plugins.centerText.text;
+      const text = chart.config.options.plugins.centerText.text; // Fetch the custom text
+      const lines = text.split("\n"); // Split into multiple lines if needed
 
-      const lines = text.split("\n");
-
-      ctx.save();
+      ctx.save(); // Save the current canvas state
       ctx.font = "bold 16px Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
-      const lineHeight = 30;
-      const startY = centerY - ((lines.length - 1) * lineHeight) / 2 + 9;
+      const lineHeight = 30; // Vertical space between lines
+      const startY = centerY - ((lines.length - 1) * lineHeight) / 2 + 9; // Adjust vertical start position
 
+      // Draw each line centered on the chart
       lines.forEach((line, index) => {
         ctx.fillText(line, centerX, startY + index * lineHeight);
       });
 
-      ctx.restore();
+      ctx.restore(); // Restore canvas to its original state
     },
   };
 

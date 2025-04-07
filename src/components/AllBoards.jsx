@@ -9,22 +9,17 @@ import { FaUsers, FaListCheck } from "react-icons/fa6";
 import "../App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import Divider from "./Divider";
+
 export default function AllBoards() {
-  const location = useLocation();
-
-  const [task, setTask] = useState({ task: " " });
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [boards, setBoards] = useState([]);
-  const [currentUserId, setcurrentUserId] = useState();
-  const [collaboratorNames, setCollaboratorNames] = useState({});
+  const [boards, setBoards] = useState([]); // State to hold boards of the current user
+  const [currentUserId, setcurrentUserId] = useState(); // State to store the current user's ID from the token
+  const [collaboratorNames, setCollaboratorNames] = useState({}); // State to hold the collaborator names for each board (boardId => string of names)
 
   const navigate = useNavigate();
+
+  // get names of collaborators for a given board
   const getCollabratorNames = (boardId) => {
     const url = `http://localhost:6005/api/boardusers/${boardId}`;
-
     return axios
       .get(url)
       .then((res) => {
@@ -36,6 +31,7 @@ export default function AllBoards() {
       });
   };
 
+  //get all boards that the current user is part of and set them in the boards state
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -47,16 +43,18 @@ export default function AllBoards() {
         console.error("Token decoding error:", error);
       }
     }
+
     if (currentUserId) {
       axios
         .get("http://localhost:6005/api/boards")
         .then(async (res) => {
+          // filter only boards where the current user is included
           const myBoards = res.data.filter((board) =>
             board.users.includes(currentUserId)
           );
           setBoards(myBoards);
-          console.log("my Boards", boards);
 
+          //get collaborators names for each boards and store them
           const names = {};
           for (const board of myBoards) {
             const collaborators = await getCollabratorNames(board._id);
@@ -125,6 +123,7 @@ export default function AllBoards() {
           </div>
         </Card>
 
+        {/* Board List Container Card */}
         <Card
           style={{
             minHeight: "40vh",
@@ -141,7 +140,6 @@ export default function AllBoards() {
             justifyContent: "center",
             paddingTop: "40px",
             paddingBottom: "40px",
-
             paddingRight: "80px",
             gap: "20px",
           }}
@@ -181,8 +179,10 @@ export default function AllBoards() {
               List Of Boards
             </Card.Text>
           </div>
+
+          {/* List of individual boards */}
           {boards.map((board, index) => (
-            <div>
+            <div key={board._id}>
               <div
                 style={{
                   display: "flex",
@@ -192,6 +192,7 @@ export default function AllBoards() {
                   marginBottom: "25px",
                 }}
               >
+                {/* Board Title and Collaborators */}
                 <div
                   style={{
                     display: "flex",
@@ -222,6 +223,8 @@ export default function AllBoards() {
                     {collaboratorNames[board._id]}
                   </Card.Text>
                 </div>
+
+                {/* View Task Button */}
                 <div style={{ display: "flex", gap: "30px" }}>
                   <Button
                     className="btn1"
@@ -231,6 +234,8 @@ export default function AllBoards() {
                   </Button>
                 </div>
               </div>
+
+              {/*add divider only between boards*/}
               {index < boards.length - 1 && <Divider />}
             </div>
           ))}

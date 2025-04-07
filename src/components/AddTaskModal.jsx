@@ -12,6 +12,7 @@ export default function AddTaskModal({
   const [day, setDay] = useState("");
   const [taskDesc, settaskDesc] = useState("");
 
+  //reset all fields of the form
   const resetForm = () => {
     settaskName("");
     setDay("");
@@ -22,19 +23,22 @@ export default function AddTaskModal({
     resetForm();
     closeModal();
   };
+
   const status = "Incomplete";
   const handleSubmit = () => {
     if (!taskName || !taskDesc || !day) {
+      //check for the existance of all required fields
       alert("All field need to be filled to create a task.");
     } else {
       const deadline = day
         .toLocaleDateString("en-US", {
+          // set options for date
           year: "numeric",
           day: "2-digit",
           month: "2-digit",
         })
-        .replace(/\//g, "-");
-      addTask({ taskName, taskDesc, deadline, status });
+        .replace(/\//g, "-"); // replate "/" with "-" to get the format : dd-mm-yyyy
+      addTask({ taskName, taskDesc, deadline, status }); //add a task object with the given info
       resetForm();
       closeModal();
     }
@@ -42,6 +46,8 @@ export default function AddTaskModal({
 
   return (
     <div className={`modall ${showAddTaskModal ? "show" : ""}`}>
+      {" "}
+      {/*apply the class modall show based on the value of the boolean*/}
       <div
         style={{
           position: "absolute",

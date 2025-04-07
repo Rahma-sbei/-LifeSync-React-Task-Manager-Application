@@ -1,7 +1,7 @@
 import React from "react";
-import { FaHandHoldingHeart } from "react-icons/fa6";
 import { Card } from "react-bootstrap";
 
+//footer component, rendered throughout the whole website
 export default function Footer() {
   return (
     <div
