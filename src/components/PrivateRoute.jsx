@@ -4,7 +4,6 @@ import { UserRole } from "./UserRole";
 
 function PrivateRoute({ children, allowedRoles }) {
   const role = UserRole();
-  console.log(role);
 
   if (role) {
     return (

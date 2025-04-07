@@ -7,7 +7,7 @@ require("dotenv").config();
 const createTaskBoard = async (req, res) => {
   const { title, users, tasks } = req.body; // get the required input from the request body
 
-  //check the validaty of the given input
+  //check the validity of the given input
   try {
     if (!title || !Array.isArray(users) || !Array.isArray(tasks)) {
       return res

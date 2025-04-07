@@ -18,8 +18,10 @@ import PrivateRoute from "./PrivateRoute";
 export const UserContext = createContext();
 
 export default function FullApp() {
+  //routes where navigation bar will not be rendered
   const noNavBarPages = ["/", "/signIn", "/signUp"];
   const [currentUser, setCurrentUser] = useState(null);
+  //determine the current location for conditional rendering of the navigation bar
   const location = useLocation();
 
   return (
@@ -41,8 +43,8 @@ export default function FullApp() {
           paddingBottom: "30px",
         }}
       >
+        {/*conditional rendering of the navigation bar*/}
         {!noNavBarPages.includes(location.pathname) && <NavBar />}
-
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signUp" element={<SignUp />} />
