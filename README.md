@@ -1,6 +1,6 @@
 <h1 align="center">📘 Welcome to LifeSync ⭐</h1>
 
-<img src="./src/assets/home.png" alt="Alt text" width="800">
+<img src="./frontend/src/assets/home.png" alt="Alt text" width="800">
 
 <h2>Tech Stack</h2>
 

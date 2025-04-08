@@ -1,7 +1,7 @@
 const express = require("express");
 const boardRoute = express.Router();
 
-//import function from controller
+//import handlers from controller
 const {
   createTaskBoard,
   inviteUser,
