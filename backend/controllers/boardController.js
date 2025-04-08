@@ -3,7 +3,8 @@ const User = require("../models/User");
 
 require("dotenv").config();
 
-//Create a new tasks board
+//Create a new tasks board: this function accepts the input from the request body
+//and creates a taskBoard document based on the provided info then stores it in the database
 const createTaskBoard = async (req, res) => {
   const { title, users, tasks } = req.body; // get the required input from the request body
 
@@ -22,7 +23,7 @@ const createTaskBoard = async (req, res) => {
       tasks,
     });
 
-    await newTaskBoard.save(); //save it in the db
+    await newTaskBoard.save(); //save it to the database
 
     res.status(201).json({
       taskBoard: newTaskBoard,
@@ -34,7 +35,7 @@ const createTaskBoard = async (req, res) => {
   }
 };
 
-//get list of all boards in the db
+//this function retrieves a list containing all boards of saved in the database
 const getBoards = async (req, res) => {
   try {
     const boards = await Board.find(); //retrieve list of boards
@@ -49,7 +50,10 @@ const getBoards = async (req, res) => {
     console.log("error retrieving tasks", error);
   }
 };
-// invite a user to a task board by email
+
+// this functiona accepts a borad id from the url params, and the user email from the request body
+//finds the board and the user in their respective collections based on the provided info
+//and adds the user id to the users attribute of the boards collection
 const inviteUser = async (req, res) => {
   const boardId = req.params.id; // Get board ID from URL params
   const email = req.body.email; // Get email of user to invite
@@ -88,7 +92,8 @@ const inviteUser = async (req, res) => {
   }
 };
 
-// add a new task to an existing task board
+// same logic as the invite user function, gets the board id and the task string, and adds the latter to the tasks
+// attribute of the board collections
 const addTask = async (req, res) => {
   const boardId = req.params.id; // Get task board ID
   const task = req.body.task; // Get task data
@@ -118,7 +123,7 @@ const addTask = async (req, res) => {
   }
 };
 
-// get all users in a task board
+// this function accepts the board id from the url params and returns all users belonging to that board
 const getBoardUsers = async (req, res) => {
   const boardId = req.params.id; // get board ID from URL params
 
@@ -142,7 +147,7 @@ const getBoardUsers = async (req, res) => {
   }
 };
 
-// get all tasks in a task board
+// this fucntion accepts the board id from the url params and returns all tasks in a task board
 const getBoardTasks = async (req, res) => {
   const boardId = req.params.id; // Get board ID
 
