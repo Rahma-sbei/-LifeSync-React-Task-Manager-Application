@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { FaListCheck } from "react-icons/fa6";
-import Dimg from "../assets/bgsc.png";
+import Dimg from "../../assets/bgsc.png";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
+import "../../App.css";
 
 //this is the header for the tasks page
 export default function Header({ currentDate }) {

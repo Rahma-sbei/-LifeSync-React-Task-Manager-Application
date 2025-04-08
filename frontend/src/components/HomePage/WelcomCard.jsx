@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaArrowRight } from "react-icons/fa6";
-import bgImage from "../assets/pexels-lilartsy-1925537.png";
+import bgImage from "../../assets/pexels-lilartsy-1925537.png";
 import { ShowContext } from "../../App";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";

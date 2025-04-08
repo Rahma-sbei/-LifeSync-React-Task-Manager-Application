@@ -1,6 +1,6 @@
 import React from "react";
 import TaskItem from "./TaskItem";
-import "../App.css";
+import "../../App.css";
 import { Card } from "react-bootstrap";
 
 export default function TaskList({ tasks, onDelete }) {

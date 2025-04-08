@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 import { Card } from "react-bootstrap";
-import sc from "../assets/bgProfile.png";
+import sc from "../../assets/bgProfile.png";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 

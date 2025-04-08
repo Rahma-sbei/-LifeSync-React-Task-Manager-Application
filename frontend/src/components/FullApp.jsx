@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import { Routes, Route, useLocation } from "react-router-dom";
 import TasksPage from "./Tasks/TasksPage";
 import MyProfile from "./MyProfile";
-import TaskBoard from "./TaskBoards";
+import TaskBoard from "./Boards/TaskBoards";
 import AllBoards from "./Boards/AllBoards";
 import OneBoard from "./Boards/OneBoard";
 import Expenses from "./Expenses/Expenses";

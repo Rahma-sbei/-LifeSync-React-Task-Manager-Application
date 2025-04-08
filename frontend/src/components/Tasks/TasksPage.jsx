@@ -6,7 +6,7 @@ import AddTaskModal from "./AddTaskModal";
 import TaskList from "./TaskList";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import "../App.css";
+import "../../App.css";
 
 export default function TasksPage() {
   // Define formatting of dates

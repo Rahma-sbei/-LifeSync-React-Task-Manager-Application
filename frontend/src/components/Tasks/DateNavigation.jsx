@@ -1,6 +1,6 @@
 import React from "react";
-import ss2 from "../assets/ss2.png";
-import "../App.css";
+import ss2 from "../../assets/ss2.png";
+import "../../App.css";
 
 export default function DateNavigation({ onDayClick, selectedDay }) {
   // each numeric string (day) has a corresponding weekday label

@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import Dimg from "../assets/pixelcut-export.jpg";
-import Divider from "./Divider";
-import Pimg from "../assets/bgsc.png";
+import Dimg from "../../assets/pixelcut-export.jpg";
+import Divider from "../Divider";
+import Pimg from "../../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaPlus } from "react-icons/fa6";
-import "../App.css";
+import "../../App.css";
 
 export default function TaskBoard() {
   const [collaboratoremail, setcollaboratoremail] = useState({ email: "" });

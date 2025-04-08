@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import Dimg from "../assets/vecteezy_abstract-technology-futuristic-glowing-blue-and-purple-light_11545796.jpg";
 import { jwtDecode } from "jwt-decode";
-import Pimg from "../assets/bgsc.png";
+import Pimg from "../../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { FaUsers, FaListCheck } from "react-icons/fa6";
-import "../App.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import "../../App.css";
+import { useNavigate } from "react-router-dom";
 import Divider from "../Divider";
+import Dimg from "../../assets/vecteezy_abstract-technology-futuristic-glowing-blue-and-purple-light_11545796.jpg";
 
 export default function AllBoards() {
   const [boards, setBoards] = useState([]); // State to hold boards of the current user

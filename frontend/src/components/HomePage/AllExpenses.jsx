@@ -4,7 +4,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
+import "../../App.css";
 
 export default function AllExpenses() {
   const data = {

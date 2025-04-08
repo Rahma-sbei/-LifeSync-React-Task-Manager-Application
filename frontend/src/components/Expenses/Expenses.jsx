@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Dimg from "../assets/bgsc.png";
-import Dimg2 from "../assets/BackgroundCard1.png";
+import Dimg from "../../assets/bgsc.png";
+import Dimg2 from "../../assets/BackgroundCard1.png";
 import { Card, Button } from "react-bootstrap";
 import { FaMoneyCheckDollar, FaFilter } from "react-icons/fa6";
 import axios from "axios";

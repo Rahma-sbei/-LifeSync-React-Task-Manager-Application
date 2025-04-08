@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
-import Dimg from "../assets/BackgroundCard1.png";
+import Dimg from "../../assets/BackgroundCard1.png";
 
-import Pimg from "../assets/bgsc.png";
+import Pimg from "../../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { FaUsers, FaListCheck, FaUserPlus } from "react-icons/fa6";
-import "../App.css";
+import "../../App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 export default function OneBoard() {
   const location = useLocation();

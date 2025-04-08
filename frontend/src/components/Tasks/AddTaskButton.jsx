@@ -1,6 +1,6 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa6";
-import "../App.css";
+import "../../App.css";
 
 export default function AddTaskButton({ handleAddTaskClick }) {
   return (
