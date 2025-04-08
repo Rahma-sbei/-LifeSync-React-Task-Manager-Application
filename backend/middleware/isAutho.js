@@ -1,4 +1,5 @@
-//check if the user has the necessary role(s) to access a route
+//This middleware retrieves user role from request object
+//checks if the user has the necessary role(s) to access a route
 const isAutho = (allowedRoles) => {
   return (req, res, next) => {
     // if the exists and its role is included in the allowed roles

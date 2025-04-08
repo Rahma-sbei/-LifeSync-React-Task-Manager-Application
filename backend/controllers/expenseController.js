@@ -1,6 +1,8 @@
 const Expense = require("../models/Expenses");
 require("dotenv").config();
-// GET all expenses from the database
+
+// Handler to retrieve all expenses
+// returns list of all expenses objects
 const getExpenses = async (request, response) => {
   try {
     const expenses = await Expense.find(); // Fetch all expense documents
@@ -16,7 +18,8 @@ const getExpenses = async (request, response) => {
   }
 };
 
-// GET a single expense by ID
+// This handler accepts expense id from url params
+// returns one expense object
 const getOneExpenses = async (request, response) => {
   const id = request.params.id; //get the ID from route parameters
   try {
@@ -37,7 +40,9 @@ const getOneExpenses = async (request, response) => {
     });
   }
 };
-// POST a new expense to the database
+
+// This handler accepts an expense object from the request body
+// Adds it to the database
 const postExpense = async (request, response) => {
   const expense = request.body; // get the expense info from the request body
   try {
@@ -48,7 +53,9 @@ const postExpense = async (request, response) => {
     response.status(500).json({ msg: "Error adding expense" });
   }
 };
-//update an existing expense
+
+//This handler accepts an expense id from the url params and expense object from request body
+//Updates the existing document
 const putExpense = async (request, response) => {
   const id = request.params.id; // get the id of the req parameters
   const expense = request.body; //get the new expense info from the req body
@@ -64,7 +71,8 @@ const putExpense = async (request, response) => {
     });
   }
 };
-//delete the given expense from the databse
+
+//This handler deletes one given expense from the databse
 const deleteExpense = async (request, response) => {
   const id = request.params.id;
   try {

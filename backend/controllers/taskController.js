@@ -1,7 +1,8 @@
 const Task = require("../models/Task");
 require("dotenv").config();
 
-//Posting a task to the database
+//This handler accepts task object from request body
+//Save it to the database
 const postTask = async (req, res) => {
   const task = req.body; // get task from body
   try {
@@ -15,7 +16,8 @@ const postTask = async (req, res) => {
   }
 };
 
-//Toggle the status of the task
+//This handle accepts task id from url params
+//Toggles task status
 const updateTaskStatus = async (req, res) => {
   const taskId = req.params.id;
   try {
@@ -35,7 +37,8 @@ const updateTaskStatus = async (req, res) => {
   }
 };
 
-//get list of all tasks in the database
+//This handles retrieves all tasks from the database
+//return a list of task objects
 const getTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -51,7 +54,8 @@ const getTasks = async (req, res) => {
   }
 };
 
-//find a specific task based of the given id
+//This handle accepts task id from url params
+//returns the specific task
 const getOneTask = async (req, res) => {
   const taskId = req.params.id; //get id as part of the URL
   try {
@@ -68,6 +72,8 @@ const getOneTask = async (req, res) => {
   }
 };
 
+//This handle accepts task id from url params
+//Deletes the specidfic task
 const deleteTask = async (req, res) => {
   const id = req.params.id;
   try {

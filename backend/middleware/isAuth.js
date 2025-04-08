@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-// check if the user is authenticated
+//This middleware retrieves token from request header
+//decodes token and add retrieved ingo to the request object
 const isAuth = async (req, res, next) => {
   try {
     const token = req.header("Authorization")?.split(" ")[1]; //get token from authorization header

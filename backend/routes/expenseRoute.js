@@ -11,7 +11,7 @@ const {
   deleteExpense,
 } = require("../controllers/expenseController");
 
-//define routes
+//define endpoints
 expenseRoute.get("/expenses", getExpenses);
 expenseRoute.get("/expenses/:id", getOneExpenses);
 expenseRoute.post("/expenses", postExpense);

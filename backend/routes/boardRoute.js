@@ -12,13 +12,12 @@ const {
   deleteBoard,
 } = require("../controllers/boardController");
 
-//define routes
-boardRoute.get("/boards", getBoards);
-boardRoute.get("/boardusers/:id", getBoardUsers);
-boardRoute.get("/boardtasks/:id", getBoardTasks);
-boardRoute.delete("/boards/:id", deleteBoard);
-boardRoute.post("/createboards", createTaskBoard);
-boardRoute.patch("/invite/:id", inviteUser);
-boardRoute.patch("/addTask/:id", addTask);
+boardRoute.get("/boards", getBoards); //This endpoint returns list of all existing boards
+boardRoute.get("/boardusers/:id", getBoardUsers); //This endpoint accepts id from url params, returns list of all user in a board
+boardRoute.get("/boardtasks/:id", getBoardTasks); //This endpoint accepts id from url params, returns list of all tasks in a board
+boardRoute.delete("/boards/:id", deleteBoard); //This endpoint accepts id from url params, deletes task
+boardRoute.post("/createboards", createTaskBoard); //This endpoint accepts task object from request body, creates boqrd
+boardRoute.patch("/invite/:id", inviteUser); //This endpoint accepts id from url params, task object from request body
+boardRoute.patch("/addTask/:id", addTask); //This endpoint accepts boad id from url params, task object from request body
 
 module.exports = boardRoute;

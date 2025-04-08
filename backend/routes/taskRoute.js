@@ -10,7 +10,7 @@ const {
   getOneTask,
 } = require("../controllers/taskController");
 
-//define routes
+//define endpoints
 taskRoute.get("/tasks", getTasks);
 taskRoute.get("/tasks/:id", getOneTask);
 taskRoute.post("/tasks", postTask);

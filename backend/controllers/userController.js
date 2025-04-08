@@ -3,7 +3,8 @@ require("dotenv").config();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 
-// Get list of all users saved in the database
+//This handles retrieves all users from the database
+//return a list of all user objects
 const getUsers = async (request, response) => {
   try {
     const users = await User.find();
@@ -18,11 +19,12 @@ const getUsers = async (request, response) => {
   }
 };
 
-// Get only one user based on the specified id
+//This handle accepts user id from url params
+//returns the specific user
 const getOneUser = async (req, res) => {
   const id = req.params.id;
   try {
-    //find user in the mongoDb tadabese by its id
+    //find user in the databse by its id
     const foundUser = await User.findById(id);
     if (foundUser) {
       res.status(200).json({ user: foundUser });
@@ -34,7 +36,8 @@ const getOneUser = async (req, res) => {
   }
 };
 
-//Post a given new user to the database
+//This handler accepts a user object from request body
+//Saves it to the database
 const postUser = async (request, response) => {
   const user = request.body;
   try {
@@ -55,7 +58,10 @@ const postUser = async (request, response) => {
   }
 };
 
-//Signing an existing user in
+//This handler accepts the user object
+//checks the existance of the user in the database
+//creates a JWT token with user id and role
+//returns the created token
 const signIn = async (req, res) => {
   const user = req.body;
   try {
@@ -68,7 +74,7 @@ const signIn = async (req, res) => {
           { id: foundUser._id, role: foundUser.role },
           process.env.JWT_SECRET
         );
-        res.status(200).json({ user: foundUser, token: token });
+        res.status(200).json({ token: token });
       } else {
         res.status(400).json({ msg: "Wrong password" });
       }
@@ -81,7 +87,8 @@ const signIn = async (req, res) => {
   }
 };
 
-// Update an existing user using a put request
+//This handle accepts user id from url params and the new user info from request body
+//Updates the user with the retrieved info
 const putUser = async (req, res) => {
   const id = req.params.id;
   const user = req.body;

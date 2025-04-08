@@ -3,8 +3,9 @@ const User = require("../models/User");
 
 require("dotenv").config();
 
-//Create a new tasks board: this function accepts the input from the request body
-//and creates a taskBoard document based on the provided info then stores it in the database
+// Handler to create a new task board.
+// This handler extracts the required data (title, users, tasks) from the request body,
+// validates the input, and creates a new TaskBoard document in the database.
 const createTaskBoard = async (req, res) => {
   const { title, users, tasks } = req.body; // get the required input from the request body
 
@@ -35,7 +36,7 @@ const createTaskBoard = async (req, res) => {
   }
 };
 
-//this function retrieves a list containing all boards of saved in the database
+//handler to retrieves a list containing all boards of saved in the database
 const getBoards = async (req, res) => {
   try {
     const boards = await Board.find(); //retrieve list of boards
@@ -51,9 +52,9 @@ const getBoards = async (req, res) => {
   }
 };
 
-// this functiona accepts a borad id from the url params, and the user email from the request body
-//finds the board and the user in their respective collections based on the provided info
-//and adds the user id to the users attribute of the boards collection
+// Handler to add a user to a task board.
+// Accepts the board ID from URL params and user email from the request body,
+// finds the board and user, and adds the user's ID to the board's users list.
 const inviteUser = async (req, res) => {
   const boardId = req.params.id; // Get board ID from URL params
   const email = req.body.email; // Get email of user to invite
@@ -92,8 +93,8 @@ const inviteUser = async (req, res) => {
   }
 };
 
-// same logic as the invite user function, gets the board id and the task string, and adds the latter to the tasks
-// attribute of the board collections
+// same logic as the invite user handler
+// add task retrieve from the body to the tasks attribute of boards collection
 const addTask = async (req, res) => {
   const boardId = req.params.id; // Get task board ID
   const task = req.body.task; // Get task data
@@ -123,7 +124,8 @@ const addTask = async (req, res) => {
   }
 };
 
-// this function accepts the board id from the url params and returns all users belonging to that board
+// This handler accepts boards id from url params
+// returns users specific to this board
 const getBoardUsers = async (req, res) => {
   const boardId = req.params.id; // get board ID from URL params
 
@@ -147,7 +149,8 @@ const getBoardUsers = async (req, res) => {
   }
 };
 
-// this fucntion accepts the board id from the url params and returns all tasks in a task board
+// This handler accepts the board id from the url params
+// returns all tasks in this task board
 const getBoardTasks = async (req, res) => {
   const boardId = req.params.id; // Get board ID
 
@@ -163,6 +166,9 @@ const getBoardTasks = async (req, res) => {
     res.status(500).json({ msg: "Error getting tasks", error });
   }
 };
+
+//Handler to delete a board
+//accepts board id from url params
 const deleteBoard = async (req, res) => {
   const id = req.params.id;
   try {

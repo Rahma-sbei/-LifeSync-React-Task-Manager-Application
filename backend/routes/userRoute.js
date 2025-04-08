@@ -1,6 +1,6 @@
 const express = require("express");
 const userRoute = express.Router();
-//import function from controller
+//import handler from controller
 const {
   getUsers,
   postUser,
@@ -12,7 +12,7 @@ const {
 //import middleware
 const { isAuth } = require("../middleware/isAuth");
 const { isAutho } = require("../middleware/isAutho");
-//define routes
+//define endpoints
 userRoute.get("/users", getUsers);
 userRoute.get("/users/:id", isAuth, isAutho(["user", "admin"]), getOneUser);
 userRoute.post("/users", postUser);
