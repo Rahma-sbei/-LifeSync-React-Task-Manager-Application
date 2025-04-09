@@ -17,7 +17,7 @@ const { isAutho } = require("../middleware/isAutho");
 userRoute.get("/users", getUsers); //This endpoint returns a list of all users
 
 //This endpoint accepts id from URL params, checks if the signed-in user is authenticated and authorized, and returns details of a single user
-userRoute.get("/users/:id", isAuth, isAutho(["user", "admin"]), getOneUser);
+userRoute.get("/users/:id", isAuth, isAutho(["admin"]), getOneUser);
 userRoute.post("/users", postUser); //This endpoint accepts user data from request body, creates a new user
 userRoute.put("/users/:id", putUser); //This endpoint accepts id from URL params, updates an existing user's data
 
