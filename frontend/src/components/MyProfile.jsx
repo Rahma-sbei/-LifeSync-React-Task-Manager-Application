@@ -14,7 +14,6 @@ import "../App.css";
 export default function MyProfile() {
   const [currentUser, setcurrentUser] = useState({});
   const [userId, setUserId] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -347,7 +346,7 @@ export default function MyProfile() {
               </div>
             </div>
             <Divider />
-            <div
+            {/* <div
               style={{
                 display: "flex",
                 gap: "40px",
@@ -426,7 +425,7 @@ export default function MyProfile() {
               >
                 {showPassword ? "Hide" : "Show"}
               </Button>
-            </div>
+            </div> */}
           </Card>
         </div>
       </div>
@@ -521,7 +520,7 @@ export default function MyProfile() {
               </Form.Label>
               <Form.Control
                 type="text"
-                placeholder={currentUser.password}
+                placeholder="Enter new Password"
                 onChange={handleChange}
                 id="password"
               />

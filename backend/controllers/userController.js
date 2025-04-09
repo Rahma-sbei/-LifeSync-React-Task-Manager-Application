@@ -74,7 +74,9 @@ const signIn = async (req, res) => {
           { id: foundUser._id, role: foundUser.role },
           process.env.JWT_SECRET
         );
-        res.status(200).json({ token: token });
+        res
+          .status(200)
+          .json({ id: foundUser._id, role: foundUser.role, token: token });
       } else {
         res.status(400).json({ msg: "Wrong password" });
       }

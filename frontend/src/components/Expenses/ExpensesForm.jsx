@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 // ExpenseForm component handles expense data input and submission
 
 export default function ExpenseForm({ addExpense }) {

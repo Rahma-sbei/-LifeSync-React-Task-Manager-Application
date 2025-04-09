@@ -23,11 +23,12 @@ export default function SignIn() {
       axios
         .post(url, user)
         .then((response) => {
-          console.log(response.data);
           const token = response.data.token;
           localStorage.setItem("token", token);
-          console.log(response.data.user.role);
-          if (response.data.user.role === "user") {
+          console.log(response.data);
+          console.log(response.data);
+          console.log(response.data.role);
+          if (response.data.role === "user") {
             navigate("/Home");
           } else {
             navigate("/Admin");
