@@ -6,22 +6,22 @@ import Pimg from "../../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import { FaUsers, FaListCheck, FaUserPlus } from "react-icons/fa6";
+import { FaUsers, FaListCheck } from "react-icons/fa6";
 import "../../App.css";
 import { useLocation, useNavigate } from "react-router-dom";
 export default function OneBoard() {
   const location = useLocation();
-  const [collaborators, setCollaborators] = useState([]);
+  const [collaborators, setCollaborators] = useState([]); //state to hold retrieved collaborators
   const navigate = useNavigate();
-  const [task, setTask] = useState({ task: " " });
-  const [show, setShow] = useState(false);
+  const [task, setTask] = useState({ task: " " }); //state to store the new task
+  const [show, setShow] = useState(false); //state to handle modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleChange = (e) => {
     setTask({ [e.target.id]: e.target.value });
   };
-  const { board } = location.state || {};
+  const { board } = location.state || {}; //retrieve board object from the location state
   const [tasks, setasks] = useState(board.tasks);
 
   useEffect(() => {
