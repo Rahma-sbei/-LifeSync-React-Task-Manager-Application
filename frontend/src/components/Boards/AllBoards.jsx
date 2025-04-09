@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import Pimg from "../../assets/bgsc.png";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import { FaUsers, FaListCheck } from "react-icons/fa6";
+import { FaListCheck } from "react-icons/fa6";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import Divider from "../Divider";

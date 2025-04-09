@@ -2,7 +2,6 @@ import {
   FaHouse,
   FaListCheck,
   FaMoneyCheckDollar,
-  FaCalendar,
   FaRightFromBracket,
   FaUser,
 } from "react-icons/fa6";

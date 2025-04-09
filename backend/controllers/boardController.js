@@ -93,8 +93,9 @@ const inviteUser = async (req, res) => {
   }
 };
 
-// same logic as the invite user handler
-// add task retrieve from the body to the tasks attribute of boards collection
+// Handler to add a task to a task board.
+// Similar to inviteUser, it finds the board and adds the task from the request body.
+
 const addTask = async (req, res) => {
   const boardId = req.params.id; // Get task board ID
   const task = req.body.task; // Get task data

@@ -61,9 +61,9 @@ export default function MyProfile() {
     console.log(userUpdate);
     try {
       if (
-        userUpdate.userName != "" ||
-        userUpdate.email != "" ||
-        userUpdate.password != ""
+        userUpdate.userName !== "" ||
+        userUpdate.email !== "" ||
+        userUpdate.password !== ""
       ) {
         await axios.put(`${url}/${currentUser._id}`, userUpdate);
         alert("Profile updated successfully");
